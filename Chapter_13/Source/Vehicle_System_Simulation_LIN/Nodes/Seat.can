@@ -1,0 +1,166 @@
+/*@!Encoding:1252*/
+includes
+{
+ 
+}
+
+variables
+{
+  //initialize variables for position data
+  int horipos1=5,vertpos1=10,backpos1=17,headpos1=28;
+  int horipos2=2,vertpos2=13,backpos2=21,headpos2=26;
+}
+
+//to process DriverID change
+on signal DriverID
+{
+  if($Driver_Info::DriverID==1)
+  {
+    driver2_pos();
+  }
+  else
+  {
+    driver1_pos(); 
+  }
+}
+
+//chane the seat position to Driver1 setting
+void driver1_pos(void)
+{
+  $Vertical_Position=vertpos1-8;
+  $Horizontal_Position=horipos1;
+  $SeatBack_Position=backpos1-16;
+  $Head_Position=headpos1-26; 
+}
+
+//chane the seat position to Driver1 setting
+void driver2_pos(void)
+{
+  $Vertical_Position=vertpos2-8;
+  $Horizontal_Position=horipos2;
+  $SeatBack_Position=backpos2-16;
+  $Head_Position=headpos2-26; 
+}
+
+//To process the receiving of Seat_Setting LIN Msg
+on linFrame Seat_Setting
+{
+  //update LED display
+  putValue(EnvSeat_back_Dsp,$Seat_back);
+  putValue(EnvSeat_forward_Dsp,$Seat_forward);
+  putValue(EnvSeat_up_Dsp,$Seat_up);
+  putValue(EnvSeat_down_Dsp,$Seat_down);
+  putValue(EnvSeatback_back_Dsp,$Seatback_back);
+  putValue(EnvSeatback_forward_Dsp,$Seatback_forward);
+  putValue(EnvSeathead_up_Dsp,$Head_up);
+  putValue(EnvSeathead_down_Dsp,$Head_down);
+  
+  //update the seat position and LIN Frame: Seat_Position
+  if($DriverID==1)
+  {
+    Driver2_Adjust();
+  }
+  else
+  {
+    Driver1_Adjust();
+  }
+ }
+
+//Driver1: Update the seat position and signals of LIN Frame Seat_Position
+void Driver1_Adjust(void)
+{
+  //update horizontal position
+  if (horipos1 < 7 && $Seat_back)
+  {
+    horipos1 = horipos1 + 1;
+  }
+  if (horipos1 > 0 && $Seat_forward)
+  {
+    horipos1 = horipos1 - 1;
+  }
+    
+  //update vertical position
+  if (vertpos1 < 15 && $Seat_up)
+  {
+    vertpos1 = vertpos1 + 1;
+  }
+  if (vertpos1 > 8 && $Seat_down)
+  {
+    vertpos1 = vertpos1 - 1;
+  }
+  
+  //update seat back position
+  if (backpos1 < 25 && $Seatback_back)
+  {
+    backpos1 = backpos1 + 1;
+  }
+  if (backpos1 > 16 && $Seatback_forward)
+  {
+    backpos1 = backpos1 - 1;
+  }
+   
+  //update seat head position
+  if(headpos1 < 29 && $Head_up)
+  {
+    headpos1 = headpos1 + 1;
+  }
+  if(headpos1 > 26 && $Head_down)
+  {
+    headpos1 = headpos1 - 1;
+  } 
+  
+  //update the signals in the Frame of Seat_Position
+  $Vertical_Position=vertpos1-8;
+  $Horizontal_Position=horipos1;
+  $SeatBack_Position=backpos1-16;
+  $Head_Position=headpos1-26; 
+}
+//Driver2: Update the seat position and signals of LIN Frame Seat_Position
+void Driver2_Adjust(void)
+{
+  //update horizontal position
+  if (horipos2 < 7 && $Seat_back)
+  {
+    horipos2 = horipos2 + 1;
+  }
+  if (horipos2 > 0 && $Seat_forward)
+  {
+    horipos2 = horipos2 - 1;
+  }
+    
+  //update vertical position
+  if (vertpos2 < 15 && $Seat_up)
+  {
+    vertpos2 = vertpos2 + 1;
+  }
+  if (vertpos2 > 8 && $Seat_down)
+  {
+    vertpos2 = vertpos2 - 1;
+  }
+  
+  //update seat back position
+  if (backpos2 < 25 && $Seatback_back)
+  {
+    backpos2 = backpos2 + 1;
+  }
+  if (backpos2 > 16 && $Seatback_forward)
+  {
+    backpos2 = backpos2 - 1;
+  }
+   
+  //update seat head position
+  if(headpos2 < 29 && $Head_up)
+  {
+    headpos2 = headpos2 + 1;
+  }
+  if(headpos2 > 26 && $Head_down)
+  {
+    headpos2 = headpos2 - 1;
+  } 
+  
+  //update the signals in the Frame of Seat_Position
+  $Vertical_Position=vertpos2-8;
+  $Horizontal_Position=horipos2;
+  $SeatBack_Position=backpos2-16;
+  $Head_Position=headpos2-26; 
+}

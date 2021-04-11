@@ -1,0 +1,223 @@
+/*@!Encoding:1252*/
+includes
+{
+
+}
+
+variables
+{
+  msTimer SpeedDown, EngDown;
+  dword WritePage;
+}
+
+on start
+{
+  canOffline(3); 
+  writeLineEx(WritePage,1,"--------This demo demonstrated the CAN bus simulation!!--------");  
+  writeLineEx(0,1,"Press <1> to start/stop CAN_logging");    //Write simulation information in write window
+}
+
+
+on key '1'
+{
+  int flag;
+
+  if(flag==0)
+  {
+    flag=1;
+    write("CAN logging starts");
+    //start logging Logging CAN with a pretrigger with 500ms
+    startlogging("CAN_Logging",500);
+  }
+  else 
+  {
+    flag=0;
+    write("CAN logging ends");
+    //stop logging Logging CAN with a posttriggre with 1000ms
+    stoplogging("CAN_Logging",1000);
+  }   
+}
+
+
+on signal_update LockStatus
+{
+  if(this==1)
+  {
+    canOnline(3);     //connect the node to the newwork
+  }
+  else if(this==0)
+  {
+    canOffline(3);    //disconnect the node from the newwork
+  }
+}
+
+on sysvar Vehicle_Control::Gear
+{
+  $Gear=@this;      //Change Gear status based on user operation
+}
+
+void EngineData_Init(void)
+{
+  //Initialize the data of Engine
+  $VehicleSpeed=0;
+  $EngSpeed=0;
+  $EngTemp=0;
+  $PetrolLevel=0;
+}
+
+on signal_update KeyState
+{
+  if(this==0)
+  {
+    EngineData_Init();   //Init engine data based on KeyState
+  }
+  if(this>0)
+  {
+    $PetrolLevel=255;    //Init PetrolLevel based on KeyState
+  }
+}
+
+on sysvar_update Vehicle_Control::Eng_Speed     //Engine speed only available when Key is ON
+{
+  if(@Vehicle_Key::Key_State==2)
+  {
+    $EngineData::EngSpeed=@this;
+  }
+  else
+  {
+    $EngineData::EngSpeed=0;
+  }
+}
+
+on sysvar_update Vehicle_Control::Veh_Speed     //Vehicle speed only available when Gear is Drive and Key is ON
+{
+  if((@Vehicle_Control::Gear==3)&&(@Vehicle_Key::Key_State==2))
+  {
+    $VehicleData::VehicleSpeed=@this;
+  }
+  else
+  {
+    $VehicleData::VehicleSpeed=0;
+  }
+}
+
+//only for simulation
+on sysvar_update Vehicle_Control::Speed_Up  //Speed up when sysvar speed_up enabled
+{
+  if($EngTemp<90)
+  {
+    $EngTemp=@this*1.5;
+  }
+  else
+  {
+    $EngTemp=90;
+  }
+  if($PetrolLevel<255)
+  {
+    $PetrolLevel=@this*8.5;
+  }
+  else
+  {
+    $PetrolLevel=255;
+  }
+  @Vehicle_Control::Veh_Speed=@this;
+  @Vehicle_Control::Eng_Speed=@this*40;
+  if(@this>120)
+  {
+    @this=60;
+  }
+}
+
+on sysvar Vehicle_Control::Brake    //Speed down when Brake is enable
+{
+  int i;
+  if(@this==1)
+  {
+    $GearLock=0;
+    setTimer(SpeedDown,50);
+    setTimer(EngDown,50);
+  }
+  else
+  {
+    $GearLock=1;
+    cancelTimer(SpeedDown);
+    cancelTimer(EngDown);
+  }
+}
+
+on timer SpeedDown      //Implement speed down function
+{
+  @Vehicle_Control::Veh_Speed=@Vehicle_Control::Veh_Speed-1;
+  setTimer(this,50);
+  if(@Vehicle_Control::Veh_Speed<=0)
+  {
+    cancelTimer(SpeedDown);
+    @Vehicle_Control::Veh_Speed=0;
+   }
+}
+
+on timer EngDown    //Implement engine speed down function
+{
+  @Vehicle_Control::Eng_Speed=@Vehicle_Control::Eng_Speed-40;
+  setTimer(this,50);  
+  if(@Vehicle_Control::Eng_Speed<=0)
+  {
+    cancelTimer(EngDown);
+    @Vehicle_Control::Eng_Speed=0;    
+  }
+}
+
+/*****************************************************************************
+*
+*                      Following Part for Lost Message Demo
+*
+*****************************************************************************/
+
+on sysvar sysvar::LostMessage::Gateway_EngineData
+{
+  switch (@this)
+  {
+    case 0:
+    {
+      ILFaultInjectionEnableMsg(EngineData);
+      break;
+    }
+    case 1:
+    {
+      ILFaultInjectionDisableMsg(EngineData);
+      break;
+    }
+  }
+}
+on sysvar sysvar::LostMessage::Gateway_VehicleData
+{
+  switch (@this)
+  {
+    case 0:
+    {
+      ILFaultInjectionEnableMsg(VehicleData);
+      break;
+    }
+    case 1:
+    {
+      ILFaultInjectionDisableMsg(VehicleData);
+      break;
+    }
+  }
+}
+on sysvar sysvar::LostMessage::Gateway_Gear_Info
+{
+  switch (@this)
+  {
+    case 0:
+    {
+      ILFaultInjectionEnableMsg(Gear_Info);
+      break;
+    }
+    case 1:
+    {
+      ILFaultInjectionDisableMsg(Gear_Info);
+      break;
+    }
+  }
+}

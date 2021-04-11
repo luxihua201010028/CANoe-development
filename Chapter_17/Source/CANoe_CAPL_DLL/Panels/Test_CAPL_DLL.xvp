@@ -1,0 +1,91 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Test_CAPL_DLL">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1" Children="Controls" ControlName="Static Text1">
+      <Property Name="Name">StaticTextControl1</Property>
+      <Property Name="Size">57, 13</Property>
+      <Property Name="Location">32, 89</Property>
+      <Property Name="Text">Input Data</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.HexEditorControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="HexEditorControl1" Children="Controls" ControlName="Hex/Text Editor1">
+      <Property Name="Name">HexEditorControl1</Property>
+      <Property Name="Size">199, 53</Property>
+      <Property Name="Location">106, 89</Property>
+      <Property Name="ViewLayout">OnlyHexfield</Property>
+      <Property Name="SymbolDataType">ByteArray</Property>
+      <Property Name="SymbolConfiguration">5;16;CAPL_DLL;;;Input_Data;8;;;-1;;;</Property>
+      <Property Name="TabIndex">6</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2" Children="Controls" ControlName="Input/Output Box3">
+      <Property Name="Name">TextBoxControl2</Property>
+      <Property Name="Size">134, 20</Property>
+      <Property Name="Location">190, 160</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">CRC Lo Byte:</Property>
+      <Property Name="DescriptionSize">73, 20</Property>
+      <Property Name="SymbolConfiguration">5;16;CAPL_DLL;;;CRC_LByte;1;;;-1;;;</Property>
+      <Property Name="TabIndex">3</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl3" Children="Controls" ControlName="Input/Output Box2">
+      <Property Name="Name">TextBoxControl3</Property>
+      <Property Name="Size">132, 20</Property>
+      <Property Name="Location">35, 160</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Hexadecimal</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">CRC Hi Byte:</Property>
+      <Property Name="DescriptionSize">71, 20</Property>
+      <Property Name="SymbolConfiguration">5;16;CAPL_DLL;;;CRC_HByte;1;;;-1;;;</Property>
+      <Property Name="TabIndex">3</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl2" Children="Controls" ControlName="Button2">
+      <Property Name="Name">ButtonControl2</Property>
+      <Property Name="Size">124, 19</Property>
+      <Property Name="Location">314, 89</Property>
+      <Property Name="Text">Calculate CRC</Property>
+      <Property Name="SymbolConfiguration">5;16;CAPL_DLL;;;calCrc_press;1;;;-1;;;</Property>
+      <Property Name="TabIndex">2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl1" Children="Controls" ControlName="Button1">
+      <Property Name="Name">ButtonControl1</Property>
+      <Property Name="Size">124, 19</Property>
+      <Property Name="Location">314, 35</Property>
+      <Property Name="Text">Read MAC</Property>
+      <Property Name="SymbolConfiguration">5;16;CAPL_DLL;;;getMac_press;1;;;-1;;;</Property>
+      <Property Name="TabIndex">2</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1" Children="Controls" ControlName="Input/Output Box1">
+      <Property Name="Name">TextBoxControl1</Property>
+      <Property Name="Size">264, 20</Property>
+      <Property Name="Location">29, 35</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="ValueDisplay">Text</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;100</Property>
+      <Property Name="DisplayLabel">Left</Property>
+      <Property Name="DescriptionText">MAC Address:</Property>
+      <Property Name="DescriptionSize">77, 20</Property>
+      <Property Name="SymbolConfiguration">5;16;CAPL_DLL;;;MAC_Addr;4;;;-1;;;</Property>
+      <Property Name="TabIndex">1</Property>
+      <Property Name="ReadOnlyControl">True</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">480, 200</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>

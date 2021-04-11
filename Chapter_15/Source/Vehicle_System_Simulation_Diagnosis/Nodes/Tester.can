@@ -1,0 +1,419 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  msTimer tester;
+}
+
+void SendRequestAndCheckReturnvalue(diagRequest * req)
+{
+  //Function for sending specified diagnostic request
+  long ret;
+  ret=req.SendRequest();
+  if(ret>=0) {
+    write("Request was successfully added to the send queue.");
+  }
+  else {
+    write("ERROR: Could not start sending the request");
+  }
+}
+
+void show_menu()
+{
+  //Information in write window
+  write(" ");
+  write("IPC Diagnostics Tester");
+  write("---------------------------------------------");
+  write("Please select any service in Diagnostic Panel");
+  write("---------------------------------------------");  
+}
+
+on start
+{
+  //Init the system 
+  show_menu();
+  Init_ManufactureDate_Data();
+  Init_SerialNumber_Data();
+  Init_ECUVIN_Data();
+  Init_ECUCoding_Data();
+  Start_Vehicle_System();
+  settimer(tester,200);
+}
+
+void Start_Vehicle_System()
+{
+  //Start the vehicle system at the measurement start for diagnosis test
+  @Vehicle_Key::Unlock_Car=1;
+  @Vehicle_Key::Key_State=3;
+}
+
+on timer tester
+{
+  //Get the Tester_Present status
+  @Diagnosis::Tester_Present_Status=diagGetTesterPresentState("IPC");
+  settimer(tester,200);
+}
+
+void Init_ManufactureDate_Data()
+{
+  //Init display control
+  char str[20]="             ";
+  sysvarString * ECU_Manufacturing_Date_Data;
+  sysSetVariableString(sysvar::Diagnosis::ECU_Manufacturing_Date_Data,str);
+  sysSetVariableString(sysvar::Diagnosis::ECU_Manufacturing_Date_String,str);
+  setControlColors("Diagnositc Panel", "Input/Output Box 4", MakeRGB(224,224,224), MakeRGB(0,0,0));
+}
+
+void Init_SerialNumber_Data()
+{
+  //Init display control
+  byte data[9];
+  char str[20]="             ";
+  sysvarData * ECU_Serial_Number_Data;
+  sysSetVariableData(sysvar::Diagnosis::ECU_Serial_Number_Data,data,elCount(data)); 
+  sysSetVariableString(sysvar::Diagnosis::ECU_Serial_Number_Data_String,str);
+  setControlColors("Diagnositc Panel", "Input/Output Box 5", MakeRGB(224,224,224), MakeRGB(0,0,0));
+}
+
+void Init_ECUVIN_Data()
+{
+  //Init display control
+  byte data[17];
+  char str[20]="             ";
+  sysvarData * ECU_VIN_Data;
+  sysSetVariableData(sysvar::Diagnosis::ECU_VIN_Data,data,elCount(data)); 
+  sysSetVariableString(sysvar::Diagnosis::ECU_VIN_String,str);
+  setControlColors("Diagnositc Panel", "Input/Output Box 6", MakeRGB(224,224,224), MakeRGB(0,0,0));
+}
+
+void Init_ECUCoding_Data()
+{
+  //Init display control
+  char str[20]="             ";
+  sysSetVariableString(sysvar::Diagnosis::Variant_Coding_String,str);
+  setControlColors("Diagnositc Panel", "Variant_Coding", MakeRGB(224,224,224), MakeRGB(0,0,0));
+}
+
+on sysvar Diagnosis::ECU_Manufacturing_Date_Clean
+{
+  if(@this)
+  {
+    Init_ManufactureDate_Data();
+  }
+}
+on sysvar Diagnosis::ECU_VIN_Clean
+{
+  if(@this)
+  {
+    Init_ECUVIN_Data();
+  }
+}
+on sysvar Diagnosis::ECU_Serial_Number_Clean
+{
+  if(@this)
+  {
+    Init_SerialNumber_Data();
+  }
+}
+
+/////////////////////////////////////////Manufacture Date Read/Write////////////////////////////////////
+on sysvar Diagnosis::ECU_Manufacturing_Date_Read
+{
+  //Send ECU_Manufacturing_Date_Read request
+  if(@this)
+  {
+    diagRequest IPC.ECU_Manufacturing_Date_Read req;
+    write("------ Reading The ECU Manufacturing Date ------");
+    SendRequestAndCheckReturnvalue(req);      
+  }
+}
+
+on diagResponse IPC.ECU_Manufacturing_Date_Read
+{
+  //Get and display the ECU_Manufacturing_Date_Read response data
+  byte rawdata[6];
+  char str1[3];
+  char str2[3];
+  char str3[3];
+  char str[12];
+  sysvarString * ECU_Manufacturing_Date_Data;
+  sysvarString * ECU_Manufacturing_Date_String;
+  if(this.IsPositiveResponse())
+  {
+    DiagGetPrimitiveData(this,rawdata,elCount(rawdata));
+    ltoa(rawdata[3],str1,16);
+    ltoa(rawdata[4],str2,16);
+    ltoa(rawdata[5],str3,16);
+    strncat(str,"20",3);
+    strncat(str,str1,6);
+    strncat(str,":",7);
+    strncat(str,str2,9);
+    strncat(str,":",10);
+    strncat(str,str3,12);
+    sysSetVariableString(sysvar::Diagnosis::ECU_Manufacturing_Date_Data,str);
+    sysSetVariableString(sysvar::Diagnosis::ECU_Manufacturing_Date_String, "OK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 4", MakeRGB(51,255,0), MakeRGB(0,0,0));
+  }
+  else
+  {
+    sysSetVariableString(sysvar::Diagnosis::ECU_Manufacturing_Date_String, "NOK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 4", MakeRGB(255,0,0), MakeRGB(0,0,0));
+  }
+}
+
+on sysvar Diagnosis::ECU_Manufacturing_Date_Write
+{
+  //Send ECU_Manufacturing_Date_Write request
+  diagRequest IPC.ECU_Manufacturing_Date_Write req;
+  char str[12];
+  dword year, month, day;
+  sysvarString * ECU_Manufacturing_Date_Data; 
+  //Put the value to the diagnosis parameter
+  if(@this)
+  {
+    write("------ Write The ECU Manufacturing Date ------");
+    sysGetVariableString(sysvar::Diagnosis::ECU_Manufacturing_Date_Data,str,elCount(str));
+    strtoul(str,0,year);
+    strtoul(str,5,month);
+    strtoul(str,8,day);
+    if(month>12)
+    {
+      write("Month value is invalid, write function aborted");
+      return;
+    }
+    if(day>31)
+    {
+      write("Day value is invalid, write function aborted");
+      return;
+    }
+    req.SetParameter("Manufacturing_date_Year",year);
+    req.SetParameter("Manufacturing_date_Month",month);
+    req.SetParameter("Manufacturing_date_Day",day);
+    SendRequestAndCheckReturnvalue(req);      
+  }
+}
+
+on diagResponse IPC.ECU_Manufacturing_Date_Write
+{
+  //Indicate whether the response is positive or negative 
+  if(this.IsPositiveResponse())
+  {
+    sysSetVariableString(sysvar::Diagnosis::ECU_Manufacturing_Date_String, "OK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 4", MakeRGB(51,255,0), MakeRGB(0,0,0));    
+  }
+  else
+  {
+    sysSetVariableString(sysvar::Diagnosis::ECU_Manufacturing_Date_String, "NOK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 4", MakeRGB(255,0,0), MakeRGB(0,0,0));
+  }
+}
+/////////////////////////////////////////Manufacture Date Read/Write////////////////////////////////////
+
+////////////////////////////////////////Serial Number Read/Write///////////////////////////////////////
+on sysvar Diagnosis::ECU_Serial_Number_Read
+{
+  //Send ECU_Serial_Number_Read request
+  if(@this)
+  {
+    diagRequest IPC.ECU_Serial_Number_Read req;
+    write("------ Reading The ECU Serial Number ------");
+    SendRequestAndCheckReturnvalue(req);
+  }
+}
+
+on diagResponse IPC.ECU_Serial_Number_Read
+{
+  //Get and display the ECU_Serial_Number_Read response data
+  BYTE parameter[9];
+  sysvarData * ECU_Serial_Number_Data;
+  sysvarData * ECU_Serial_Number_Data_String;
+  if(this.IsPositiveResponse())
+  {
+    ECU_Serial_Number_Data=sysvar::Diagnosis::ECU_Serial_Number_Data;
+    diagGetParameterRaw(this,"Serial_Number",parameter,elCount(parameter));
+    sysSetVariableData(ECU_Serial_Number_Data,parameter,elCount(parameter));
+    sysSetVariableString(sysvar::Diagnosis::ECU_Serial_Number_Data_String, "OK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 5", MakeRGB(51,255,0), MakeRGB(0,0,0));
+  }
+  else
+  {
+    sysSetVariableString(sysvar::Diagnosis::ECU_Serial_Number_Data_String, "NOK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 5", MakeRGB(255,0,0), MakeRGB(0,0,0));
+  }
+}
+
+on sysvar Diagnosis::ECU_Serial_Number_Write
+{
+  //Send ECU_Serial_Number_Write request
+  diagRequest IPC.ECU_Serial_Number_Write reqRaw;
+  sysvarData * ECU_Serial_Number_Data;
+  BYTE parameter[9];
+  long copiedbyte;
+  long ret;
+  //Put the value to the diagnosis parameter
+  if(@this)
+  {
+    ECU_Serial_Number_Data=sysvar::Diagnosis::ECU_Serial_Number_Data;
+    sysGetVariableData(ECU_Serial_Number_Data,parameter,copiedbyte);
+    ret=reqRaw.SetParameterRaw("Serial_Number",parameter,elCount(parameter));
+    if(ret==0)
+    {
+      SendRequestAndCheckReturnvalue(reqRaw);
+    }
+    else
+      write("ERROR: Could not set parameter");
+  }
+}
+
+on diagResponse IPC.ECU_Serial_Number_Write
+{
+  //Indicate whether the response is positive or negative 
+  if(this.IsPositiveResponse())
+  {
+    sysSetVariableString(sysvar::Diagnosis::ECU_Serial_Number_Data_String, "OK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 5", MakeRGB(51,255,0), MakeRGB(0,0,0));    
+  }
+  else
+  {
+    sysSetVariableString(sysvar::Diagnosis::ECU_Serial_Number_Data_String, "NOK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 5", MakeRGB(255,0,0), MakeRGB(0,0,0));
+  }
+}
+////////////////////////////////////////Serial Number Read/Write///////////////////////////////////////
+
+///////////////////////////////////Vehicle Identification Number Read/Write////////////////////////////////
+on sysvar Diagnosis::ECU_VIN_Read
+{
+  //Send Vehicle_Identification_Number_Read request
+  diagRequest IPC.Vehicle_Identification_Number_Read req;
+  write("------ Reading The ECU Identification Number ------");
+  SendRequestAndCheckReturnvalue(req);  
+}
+
+on diagResponse IPC.Vehicle_Identification_Number_Read
+{
+  //Get and display the Vehicle_Identification_Number_Read response data
+  BYTE parameter[17];
+  sysvarData * ECU_VIN_Data;
+  if(this.IsPositiveResponse())
+  {
+    ECU_VIN_Data=sysvar::Diagnosis::ECU_VIN_Data;
+    diagGetParameterRaw(this,"VIN",parameter,elCount(parameter));
+    sysSetVariableData(ECU_VIN_Data,parameter,elCount(parameter));
+    sysSetVariableString(sysvar::Diagnosis::ECU_VIN_String, "OK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 6", MakeRGB(51,255,0), MakeRGB(0,0,0));
+  }
+  else
+  {
+    sysSetVariableString(sysvar::Diagnosis::ECU_VIN_String, "NOK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 6", MakeRGB(255,0,0), MakeRGB(0,0,0));
+  }
+}
+
+on sysvar Diagnosis::ECU_VIN_Write
+{
+  //Send Vehicle_Identification_Number_Write request
+  diagRequest IPC.Vehicle_Identification_Number_Write reqRaw;
+  sysvarData * ECU_VIN_Data;
+  BYTE parameter[17];
+  long copiedbyte;
+  long ret;
+  //Put the value to the diagnosis parameter
+  if(@this)
+  {
+    ECU_VIN_Data=sysvar::Diagnosis::ECU_VIN_Data;
+    sysGetVariableData(ECU_VIN_Data,parameter,copiedbyte);
+    ret=reqRaw.SetParameterRaw("VIN",parameter,elCount(parameter));
+    if(ret==0)
+    {
+      SendRequestAndCheckReturnvalue(reqRaw);
+    }
+    else
+      write("ERROR: Could not set parameter");
+  }  
+}
+
+on diagResponse IPC.Vehicle_Identification_Number_Write
+{
+  //Indicate whether the response is positive or negative 
+  if(this.IsPositiveResponse())
+  {
+    sysSetVariableString(sysvar::Diagnosis::ECU_VIN_String, "OK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 6", MakeRGB(51,255,0), MakeRGB(0,0,0));    
+  }
+  else
+  {
+    sysSetVariableString(sysvar::Diagnosis::ECU_VIN_String, "NOK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 6", MakeRGB(255,0,0), MakeRGB(0,0,0));    
+  }
+}
+///////////////////////////////////ECU Identification Number Read/Write////////////////////////////////
+
+//////////////////////////////////////Variant Coding Read/Write////////////////////////////////////////
+on sysvar Diagnosis::Variant_Coding_Read
+{
+  //Send Variant_Coding_Read request
+  diagRequest IPC.Variant_Coding_Read req;
+  write("------ Reading The Variant Coding ------");
+  SendRequestAndCheckReturnvalue(req);
+}
+
+on diagResponse IPC.Variant_Coding_Read
+{
+  //Get and display the Variant_Coding_Read response data
+  if(this.IsPositiveResponse())
+  {
+    @Diagnosis::Country_Code=this.GetParameter("Coding_String.Country_Code");
+    @Diagnosis::Vehicle_Type=this.GetParameter("Coding_String.Vehicle_Type");
+    @Diagnosis::Belt_Warning=this.GetParameter("Coding_String.Belt_Warning");
+    @Diagnosis::OverSpeed_Warning=this.GetParameter("Coding_String.OverSpeed_Warning");
+    sysSetVariableString(sysvar::Diagnosis::Variant_Coding_String, "OK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 7", MakeRGB(51,255,0), MakeRGB(0,0,0));  
+  }
+  else
+  {
+    sysSetVariableString(sysvar::Diagnosis::Variant_Coding_String, "NOK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 7", MakeRGB(255,0,0), MakeRGB(0,0,0));
+  }
+}
+
+on sysvar Diagnosis::Variant_Coding_Write
+{
+  //Send Variant_Coding_Write request
+  diagRequest IPC.Variant_Coding_Write reqRaw;
+  double country_code,vehicle_type,beltwarning,overspeedwarning;
+  long ret;
+  country_code=@Diagnosis::Country_Code;
+  vehicle_type=@Diagnosis::Vehicle_Type;
+  beltwarning=@Diagnosis::Belt_Warning;
+  overspeedwarning=@Diagnosis::OverSpeed_Warning;
+  //Put the value to the diagnosis parameter
+  if(@this)
+  {
+    reqRaw.SetParameter("Coding_String.Country_Code",country_code);
+    reqRaw.SetParameter("Coding_String.Vehicle_Type",vehicle_type);
+    reqRaw.SetParameter("Coding_String.Belt_Warning",beltwarning);
+    reqRaw.SetParameter("Coding_String.OverSpeed_Warning",overspeedwarning);
+    SendRequestAndCheckReturnvalue(reqRaw);
+  }
+}
+
+on diagResponse IPC.Variant_Coding_Write
+{
+  //Indicate whether the response is positive or negative 
+  if(this.IsPositiveResponse())
+  {
+    sysSetVariableString(sysvar::Diagnosis::Variant_Coding_String, "OK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 7", MakeRGB(51,255,0), MakeRGB(0,0,0));     
+  }
+  else
+  {
+    sysSetVariableString(sysvar::Diagnosis::Variant_Coding_String, "NOK");
+    setControlColors("Diagnositc Panel", "Input/Output Box 7", MakeRGB(255,0,0), MakeRGB(0,0,0));    
+  }
+}
+//////////////////////////////////////Variant Coding Read/Write////////////////////////////////////////

@@ -1,0 +1,177 @@
+/*@!Encoding:1252*/
+includes
+{
+  //To add the head files
+}
+
+variables
+{
+  msTimer msTVehSpeedDown; //define the timer(ms) for Vehicle Speed down
+  msTimer msTEngSpeedDown; //define the timer(ms) for Engine Speed down
+  dword WritePage;
+  int busflag=0; //current bus status: 0 - Deactivate CANoe IL ; 1 - Activate CANoe IL 
+}
+
+on preStart
+{
+  ILControlInit(); //Initialize CANoe IL 
+  ILControlStop(); //Deactivate CANoe IL 
+  
+  //Write simulation information in write window
+  writeLineEx(WritePage,1,"--------This demo demonstrated the CAN bus simulation!!--------"); 
+  writeLineEx(0,1,"Press <1> to start/stop CAN_logging");  
+}
+
+on key '1'
+{
+  int logflag;
+
+  if(logflag==0)
+  {
+    logflag=1;
+    write("CAN logging starts");
+    //start logging Logging CAN with a pretrigger with 500ms
+    startlogging("CAN_Logging",500);
+  }
+  else 
+  {
+    logflag=0;
+    write("CAN logging ends");
+    //stop logging Logging CAN with a posttriggre with 1000ms
+    stoplogging("CAN_Logging",1000);
+  }   
+}
+
+
+on signal_update LockStatus
+{
+  if(this!=busflag)
+  {
+    if(this==1)
+    {
+      ILControlStart();
+    }
+    else if(this==0)
+    {
+      ILControlStop();
+    }
+    busflag=this;
+  }
+}
+
+on sysvar Vehicle_Control::Gear
+{
+  $Gear=@this;      //Change Gear status based on user operation
+}
+
+void EngineData_Init(void)
+{
+  //Initialize the data of Engine
+  $VehicleSpeed=0;
+  $EngSpeed=0;
+  $EngTemp=0;
+  $PetrolLevel=0;
+}
+
+on signal_update KeyState
+{
+  if(this==0)
+  {
+    EngineData_Init();   //Init engine data based on KeyState
+  }
+  if(this>0)
+  {
+    $PetrolLevel=255;    //Init PetrolLevel based on KeyState
+  }
+}
+on sysvar_update Vehicle_Control::Eng_Speed     
+{
+  //Engine speed only available when Key is ON
+  if(@Vehicle_Key::Key_State==2)
+  {
+    $EngineData::EngSpeed=@this;
+  }
+  else
+  {
+    $EngineData::EngSpeed=0;
+  }
+}
+
+on sysvar_update Vehicle_Control::Veh_Speed
+{
+  //Vehicle speed only available when Gear is Drive and Key is ON
+  if((@Vehicle_Control::Gear==3)&&(@Vehicle_Key::Key_State==2))
+  {
+    $VehicleData::VehicleSpeed=@this;
+  }
+  else
+  {
+    $VehicleData::VehicleSpeed=0;
+  }
+}
+
+//only for simulation
+on sysvar_update Vehicle_Control::Speed_Up  //Speed up when sysvar speed_up enabled
+{
+  if($EngTemp<90)
+  {
+    $EngTemp=@this*1.5;
+  }
+  else
+  {
+    $EngTemp=90;
+  }
+  if($PetrolLevel<255)
+  {
+    $PetrolLevel=@this*8.5;
+  }
+  else
+  {
+    $PetrolLevel=255;
+  }
+  @Vehicle_Control::Veh_Speed=@this;
+  @Vehicle_Control::Eng_Speed=@this*40;
+  if(@this>120)
+  {
+    @this=60;
+  }
+}
+
+on sysvar Vehicle_Control::Brake    //Speed down when Brake is enable
+{
+  int i;
+  if(@this==1)
+  {
+    $GearLock=0;
+    setTimer(msTVehSpeedDown,50);
+    setTimer(msTEngSpeedDown,50);
+  }
+  else
+  {
+    $GearLock=1;
+    cancelTimer(msTVehSpeedDown);
+    cancelTimer(msTEngSpeedDown);
+  }
+}
+
+on timer msTVehSpeedDown      //Implement speed down function
+{
+  @Vehicle_Control::Veh_Speed=@Vehicle_Control::Veh_Speed-1;
+  setTimer(this,50);
+  if(@Vehicle_Control::Veh_Speed<=0)
+  {
+    cancelTimer(msTVehSpeedDown);
+    @Vehicle_Control::Veh_Speed=0;
+   }
+}
+
+on timer msTEngSpeedDown    //Implement engine speed down function
+{
+  @Vehicle_Control::Eng_Speed=@Vehicle_Control::Eng_Speed-40;
+  setTimer(this,50);  
+  if(@Vehicle_Control::Eng_Speed<=0)
+  {
+    cancelTimer(msTEngSpeedDown);
+    @Vehicle_Control::Eng_Speed=0;    
+  }
+}

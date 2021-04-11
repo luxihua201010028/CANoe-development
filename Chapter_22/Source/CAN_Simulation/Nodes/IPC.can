@@ -1,0 +1,41 @@
+/*@!Encoding:1252*/
+includes
+{
+  //To add the head files
+}
+
+variables
+{
+  //To add the variables
+  int busflag=0; //current bus status: 0 - offline; 1 - online
+}
+
+on start
+{
+  canOffline(3); //disconnect the node from the newwork
+}
+
+
+on signal_update LockStatus
+{
+  if(this!=busflag)
+  {
+    if(this==1)
+    {
+      write("online: IPC");
+      canOnline(3);     //connect the node to the newwork
+    }
+    else if(this==0)
+    {
+      write("offline: IPC");
+      canOffline(3);    //disconnect the node from the newwork
+    }
+    busflag=this;
+  }
+}
+
+
+on signal_update Gear
+{
+  @Cluster::Gear_Status= this;   //To display current Gear status in panel
+}

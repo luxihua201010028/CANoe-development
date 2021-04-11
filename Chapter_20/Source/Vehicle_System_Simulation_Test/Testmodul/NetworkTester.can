@@ -1,0 +1,266 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  dword gCycCheckId;
+  
+  int gUndifnedMsgCheckResult;
+  
+  const long kMIN_CYCLE_TIME = 40;
+  const long kMAX_CYCLE_TIME = 60;
+  const long Light_MIN_CYCLE_TIME = 490;
+  const long Light_MAX_CYCLE_TIME = 510;
+  const long kTIMEOUT = 4000;
+}
+
+void MainTest()
+{
+  TestModuleTitle ("NetworkTester");
+  TestModuleDescription ("Message Specication Test and Function Test Demo.");
+  TestGroupBegin("Check msg cycle time", "Check the differ message cycle time");
+    Init_Test_Condition();
+    CheckMsgEngineData();
+    CheckMsgVehicledata();
+    CheckMsgGear_Info();
+    CheckMsgIgnition_Info();
+    CheckMsgLight_Info();
+  TestGroupEnd ();
+  
+  TestGroupBegin("Check msg DLC", "Check DLC of a message"); 
+    CheckDLCLock_Info();
+  TestGroupEnd ();
+  
+  TestGroupBegin("Check undefined msg", "Check the undefined message"); 
+    CheckUndefinedMessage();
+  TestGroupEnd ();
+  
+  TestGroupBegin("Function Test", "Check the engine speed after setup"); 
+    CheckEngine_Speed();
+  TestGroupEnd();
+}
+Init_Test_Condition()
+{
+  @Vehicle_Key::Unlock_Car =1;
+  @Vehicle_Key::Car_Driver=0;
+  @Vehicle_Key::Key_State=2;
+  testWaitForTimeout(500);
+}
+testcase CheckMsgEngineData()
+{
+  float lCycMinCycleTime;  // Minimum relative distance 
+  float lCycMaxCycleTime;  // Maximum relative distance
+  
+  lCycMinCycleTime = kMIN_CYCLE_TIME;
+  lCycMaxCycleTime = kMAX_CYCLE_TIME; 
+  
+  // Information for test report.
+  TestCaseTitle("TC-1", "TC-1: Check cycle time of msg EngineData");
+  
+  
+  gCycCheckId = ChkStart_MsgAbsCycleTimeViolation (EngineData,   // Message to supervise
+                                    lCycMinCycleTime,            // min-limit
+                                    lCycMaxCycleTime);           // max-limit
+                                               
+  CheckMsgCyc(lCycMinCycleTime, lCycMaxCycleTime);
+  testRemoveCondition(gCycCheckId);
+ }
+
+
+testcase CheckMsgVehicledata()
+{
+  float lCycMinCycleTime;  // Minimum relative distance 
+  float lCycMaxCycleTime;  // Maximum relative distance
+  
+  lCycMinCycleTime = kMIN_CYCLE_TIME;
+  lCycMaxCycleTime = kMAX_CYCLE_TIME; 
+  
+  // Information for test report.
+  TestCaseTitle("TC-2", "TC-2: Check cycle time of msg VehicleData");  
+  
+  gCycCheckId = ChkStart_MsgAbsCycleTimeViolation (VehicleData,   // Message to supervise
+                                    lCycMinCycleTime,            // min-limit
+                                    lCycMaxCycleTime);           // max-limit
+                                               
+  CheckMsgCyc(lCycMinCycleTime, lCycMaxCycleTime);
+  testRemoveCondition(gCycCheckId);
+ }
+
+testcase CheckMsgGear_Info()
+{
+  float lCycMinCycleTime;  // Minimum relative distance 
+  float lCycMaxCycleTime;  // Maximum relative distance
+  
+  lCycMinCycleTime = kMIN_CYCLE_TIME;
+  lCycMaxCycleTime = kMAX_CYCLE_TIME; 
+  
+  // Information for test report.
+  TestCaseTitle("TC-3", "TC-3: Check cycle time of msg Gear_Info");
+  
+  
+  gCycCheckId = ChkStart_MsgAbsCycleTimeViolation (Gear_Info,   // Message to supervise
+                                    lCycMinCycleTime,            // min-limit
+                                    lCycMaxCycleTime);           // max-limit
+                                               
+  CheckMsgCyc(lCycMinCycleTime, lCycMaxCycleTime);
+  testRemoveCondition(gCycCheckId);
+  testWaitForTimeout(500);
+}
+
+testcase CheckMsgIgnition_Info()
+{
+  float lCycMinCycleTime;  // Minimum relative distance 
+  float lCycMaxCycleTime;  // Maximum relative distance
+  
+  lCycMinCycleTime = kMIN_CYCLE_TIME;
+  lCycMaxCycleTime = kMAX_CYCLE_TIME; 
+  
+  // Information for test report.
+  TestCaseTitle("TC-4", "TC-4: Check cycle time of msg Ignition_Info");
+  
+  
+  gCycCheckId = ChkStart_MsgAbsCycleTimeViolation (Ignition_Info,   // Message to supervise
+                                    lCycMinCycleTime,            // min-limit
+                                    lCycMaxCycleTime);           // max-limit
+                                               
+  CheckMsgCyc(lCycMinCycleTime, lCycMaxCycleTime);
+  testRemoveCondition(gCycCheckId);
+ }
+
+testcase CheckMsgLight_Info()
+{
+  float lCycMinCycleTime;  // Minimum relative distance 
+  float lCycMaxCycleTime;  // Maximum relative distance
+  
+  lCycMinCycleTime = Light_MIN_CYCLE_TIME;
+  lCycMaxCycleTime = Light_MAX_CYCLE_TIME; 
+  
+  // Information for test report.
+  TestCaseTitle("TC-5", "TC-5: Check cycle time of msg Light_Info");
+  
+  
+  gCycCheckId = ChkStart_MsgAbsCycleTimeViolation (Light_Info,   // Message to supervise
+                                    lCycMinCycleTime,            // min-limit
+                                    lCycMaxCycleTime);           // max-limit
+                                               
+  CheckMsgCyc(lCycMinCycleTime, lCycMaxCycleTime);
+  testRemoveCondition(gCycCheckId);
+}
+testcase CheckDLCLock_Info()
+{
+  dword checkId;  
+  // Information for test report.
+  TestCaseTitle("TC-6", "TC-6: Check msg DLC of Lock_Info");
+  // checks the DLC of the message
+  checkId = ChkStart_InconsistentDLC(Lock_Info);
+  TestAddCondition(checkId);
+  // sequence of different actions and waiting conditions
+  TestWaitForTimeout(kTIMEOUT);
+  TestRemoveCondition(checkId);
+}
+testcase CheckUndefinedMessage()
+{            
+  long lEventUndefineMessageId;             
+  char lbuffer[100];
+
+  gUndifnedMsgCheckResult = 0;
+
+  // Information for test report.
+  TestCaseTitle("TC-7", "TC-7: Check CAN channel for undefined messages");
+
+  gCycCheckId = ChkStart_UndefinedMessageReceived("UndefinedMsgCallback");
+
+  testWaitForTimeout(kTIMEOUT);
+
+  switch(gUndifnedMsgCheckResult)
+  {
+    case 1:  
+      // Event message ID
+      lEventUndefineMessageId = ChkQuery_EventMessageId(gCycCheckId);
+      snprintf(lbuffer,elcount(lbuffer),"Undefined message detacted: Id 0x%x", lEventUndefineMessageId);      
+      TestStepFail("", lbuffer);
+      break; 
+    default:
+      TestStepPass("","No undefined message detacted");       
+      break; 
+  }
+
+  ChkControl_Destroy(gCycCheckId);
+ }
+
+UndefinedMsgCallback(dword aCheckId)
+{
+  ChkQuery_EventStatusToWrite(aCheckId);
+  gUndifnedMsgCheckResult = 1;
+}
+
+
+CheckMsgCyc(float aCycMinCycleTime, float aCycMaxCycleTime)
+{
+  long lQueryResultNumProbes;
+  long lQueryResultProbeAvg;
+  long lQueryResultProbeMin;
+  long lQueryResultProbeMax;
+  char lbuffer[100];
+
+  TestAddCondition(gCycCheckId);
+
+  testWaitForTimeout(kTIMEOUT);
+   
+  lQueryResultNumProbes = ChkQuery_StatNumProbes(gCycCheckId);  
+  lQueryResultProbeAvg = ChkQuery_StatProbeIntervalAvg(gCycCheckId);  
+  lQueryResultProbeMin = ChkQuery_StatProbeIntervalMin(gCycCheckId); 
+  lQueryResultProbeMax = ChkQuery_StatProbeIntervalMax(gCycCheckId);   
+
+  if(ChkQuery_NumEvents(gCycCheckId) > 0)
+  {
+      snprintf(lbuffer,elcount(lbuffer),"Valid values %.0fms - %.0fms", aCycMinCycleTime, aCycMaxCycleTime);      
+      TestStepFail("", lbuffer);
+      snprintf(lbuffer,elcount(lbuffer),"Average cycle time:  %dms", lQueryResultProbeAvg);
+      TestStepFail("", lbuffer);
+      snprintf(lbuffer,elcount(lbuffer),"Min cycle time:      %dms", lQueryResultProbeMin);
+      TestStepFail("", lbuffer);
+      snprintf(lbuffer,elcount(lbuffer),"Max cycle time:      %dms", lQueryResultProbeMax);
+      TestStepFail("", lbuffer);
+   }
+   else
+   {
+      snprintf(lbuffer,elcount(lbuffer),"Valid values %.0fms - %.0fms", aCycMinCycleTime, aCycMaxCycleTime);      
+      TestStepPass("", lbuffer);
+      snprintf(lbuffer,elcount(lbuffer),"Average cycle time:  %dms", lQueryResultProbeAvg);
+      TestStepPass("", lbuffer);
+      snprintf(lbuffer,elcount(lbuffer),"Min cycle time:      %dms", lQueryResultProbeMin);
+      TestStepPass("", lbuffer);
+      snprintf(lbuffer,elcount(lbuffer),"Max cycle time:      %dms", lQueryResultProbeMax);
+      TestStepPass("", lbuffer);
+  }
+
+  ChkControl_Destroy(gCycCheckId); // Destroy the check
+}
+
+testcase CheckEngine_Speed()
+{
+  dword checkId;  
+  // Information for test report.
+  TestCaseTitle("TC-8", "TC-8: Check Engine Speed Value");
+  
+  @Vehicle_Key::Unlock_Car =1;
+  @Vehicle_Key::Car_Driver=0;
+  @Vehicle_Key::Key_State=2;
+  @Vehicle_Control::Eng_Speed =2000;
+  checkId = ChkStart_MsgSignalValueInvalid(EngineData::EngSpeed, 1900, 2100);
+  testWaitForTimeout(kTIMEOUT);  
+  if(ChkQuery_EventSignalValue(checkId))
+  {
+    TestStepPass("","Correct Engine Speed Value!");  
+  }
+  else
+  {
+    TestStepFail("","Uncorrect Engine Speed Value!");  
+  }
+}
+
+

@@ -1,0 +1,133 @@
+VERSION ""
+
+
+NS_ : 
+	NS_DESC_
+	CM_
+	BA_DEF_
+	BA_
+	VAL_
+	CAT_DEF_
+	CAT_
+	FILTER
+	BA_DEF_DEF_
+	EV_DATA_
+	ENVVAR_DATA_
+	SGTYPE_
+	SGTYPE_VAL_
+	BA_DEF_SGTYPE_
+	BA_SGTYPE_
+	SIG_TYPE_REF_
+	VAL_TABLE_
+	SIG_GROUP_
+	SIG_VALTYPE_
+	SIGTYPE_VALTYPE_
+	BO_TX_BU_
+	BA_DEF_REL_
+	BA_REL_
+	BA_DEF_DEF_REL_
+	BU_SG_REL_
+	BU_EV_REL_
+	BU_BO_REL_
+	SG_MUL_VAL_
+
+BS_:
+
+BU_: IPC Gateway BCM
+
+
+BO_ 168 VehicleData: 6 Gateway
+ SG_ VehicleSpeed : 0|10@1+ (0.5,0) [0|300] "km/h"  IPC,BCM
+ SG_ Diagnostics : 16|8@1+ (1,0) [0|255] ""  IPC,BCM
+
+BO_ 792 Lock_Info: 8 BCM
+ SG_ LockStatus : 0|2@1+ (1,0) [0|1] ""  IPC,Gateway
+
+BO_ 338 Light_Info: 8 BCM
+ SG_ VehicleLight : 0|2@1+ (1,0) [0|3] ""  IPC,Gateway
+ SG_ LightStatus : 2|1@1+ (1,0) [0|1] ""  IPC,Gateway
+
+BO_ 341 Ignition_Info: 2 BCM
+ SG_ KeyState : 0|3@1+ (1,0) [0|5] ""  IPC,Gateway
+
+BO_ 715 Gear_Info: 1 Gateway
+ SG_ GearLock : 3|1@1+ (1,0) [0|1] ""  BCM,IPC
+ SG_ Gear : 0|3@1+ (1,0) [0|5] ""  BCM,IPC
+
+BO_ 258 EngineData: 8 Gateway
+ SG_ PetrolLevel : 8|8@1+ (1,0) [0|255] ""  IPC,Gateway,BCM
+ SG_ EngTemp : 0|7@1- (2,0) [-50|150] "DegC"  IPC,Gateway,BCM
+ SG_ EngSpeed : 16|16@1+ (1,0) [0|8000] "rpm"  IPC,Gateway,BCM
+
+BO_ 817 Driver_Info: 8 BCM
+ SG_ Driver : 0|2@1+ (1,0) [0|1] ""  IPC,Gateway
+
+BO_ 689 Cluster_Info: 8 IPC
+ SG_ KilometerMileage : 0|24@1+ (1,0) [0|2000000] "km"  Gateway,BCM
+ SG_ AverageSpeed : 40|9@1+ (0.1,0) [0|300] "km/h"  Gateway,BCM
+ SG_ AverageFuleConsumption : 24|10@1+ (0.1,0) [0|100] "L/100km"  Gateway,BCM
+
+
+
+CM_ BU_ IPC "Instrument Panel Cluster";
+CM_ BU_ Gateway "Gateway";
+CM_ BU_ BCM "Body Control Module";
+BA_DEF_ BU_  "ILUsed" ENUM  "Yes","No";
+BA_DEF_ BU_  "NodeLayerModules" STRING ;
+BA_DEF_ BO_  "GenMsgStartDelayTime" INT 0 65535;
+BA_DEF_ BO_  "NmMessage" ENUM  "no","yes";
+BA_DEF_ BO_  "GenMsgILSupport" ENUM  "No","Yes";
+BA_DEF_ BU_  "NmNode" ENUM  "no","yes";
+BA_DEF_ BU_  "NmStationAddress" INT 0 63;
+BA_DEF_  "NmBaseAddress" HEX 1024 1087;
+BA_DEF_ BO_  "GenMsgCycleTimeFast" INT 0 50000;
+BA_DEF_  "BusType" STRING ;
+BA_DEF_ BO_  "GenMsgCycleTime" INT 0 50000;
+BA_DEF_ BO_  "GenMsgDelayTime" INT 0 1000;
+BA_DEF_ BO_  "GenMsgNrOfRepetition" INT 0 999999;
+BA_DEF_ BO_  "GenMsgSendType" ENUM  "Cyclic","NotUsed","NotUsed","NotUsed","NotUsed","NotUsed","NotUsed","IfActive","NoMsgSendType","NotUsed","vector_leerstring";
+BA_DEF_ SG_  "GenSigInactiveValue" INT 0 100000;
+BA_DEF_ SG_  "GenSigSendType" ENUM  "Cyclic","OnWrite","OnWriteWithRepetition","OnChange","OnChangeWithRepetition","IfActive","IfActiveWithRepetition","NoSigSendType","NotUsed","NotUsed","NotUsed","NotUsed","NotUsed";
+BA_DEF_ SG_  "GenSigStartValue" FLOAT 0 100000000000;
+BA_DEF_DEF_  "ILUsed" "Yes";
+BA_DEF_DEF_  "NodeLayerModules" "CANoeILNLVector.dll";
+BA_DEF_DEF_  "GenMsgStartDelayTime" 0;
+BA_DEF_DEF_  "NmMessage" "no";
+BA_DEF_DEF_  "GenMsgILSupport" "Yes";
+BA_DEF_DEF_  "NmNode" "no";
+BA_DEF_DEF_  "NmStationAddress" 0;
+BA_DEF_DEF_  "NmBaseAddress" 1024;
+BA_DEF_DEF_  "GenMsgCycleTimeFast" 0;
+BA_DEF_DEF_  "BusType" "CAN";
+BA_DEF_DEF_  "GenMsgCycleTime" 0;
+BA_DEF_DEF_  "GenMsgDelayTime" 0;
+BA_DEF_DEF_  "GenMsgNrOfRepetition" 0;
+BA_DEF_DEF_  "GenMsgSendType" "NoMsgSendType";
+BA_DEF_DEF_  "GenSigInactiveValue" 0;
+BA_DEF_DEF_  "GenSigSendType" "Cyclic";
+BA_DEF_DEF_  "GenSigStartValue" 0;
+BA_ "BusType" "CAN";
+BA_ "GenMsgSendType" BO_ 168 0;
+BA_ "GenMsgCycleTime" BO_ 168 50;
+BA_ "GenMsgSendType" BO_ 792 0;
+BA_ "GenMsgCycleTime" BO_ 792 100;
+BA_ "GenMsgSendType" BO_ 338 0;
+BA_ "GenMsgCycleTime" BO_ 338 500;
+BA_ "GenMsgSendType" BO_ 341 0;
+BA_ "GenMsgCycleTime" BO_ 341 50;
+BA_ "GenMsgSendType" BO_ 715 0;
+BA_ "GenMsgCycleTime" BO_ 715 50;
+BA_ "GenMsgSendType" BO_ 258 0;
+BA_ "GenMsgCycleTime" BO_ 258 50;
+BA_ "GenMsgILSupport" BO_ 817 0;
+BA_ "GenMsgSendType" BO_ 689 0;
+BA_ "GenMsgCycleTime" BO_ 689 1000;
+BA_ "GenSigStartValue" SG_ 258 EngTemp 0;
+VAL_ 792 LockStatus 1 "Unlocked" 0 "Locked" ;
+VAL_ 338 VehicleLight 3 "Hazards" 2 "Right Turn" 1 "Left Turn" 0 "OFF" ;
+VAL_ 338 LightStatus 1 "ON" 0 "OFF" ;
+VAL_ 341 KeyState 4 "Reserve" 3 "Crank" 2 "RUN" 1 "KL15" 0 "OFF" ;
+VAL_ 715 GearLock 1 "Gear_Lock_On" 0 "Gear_Lock_Off" ;
+VAL_ 715 Gear 4 "Reverve" 3 "Drive" 2 "Neutral" 1 "Reverse" 0 "Parking" ;
+VAL_ 817 Driver 1 "Driver2" 0 "Driver1" ;
+

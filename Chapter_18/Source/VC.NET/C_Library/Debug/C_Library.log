@@ -1,0 +1,15 @@
+﻿Build started 3/17/2018 7:53:46 PM.
+     1>Project "D:\MyProjects\CANoe\C_Library\C_Library\C_Library.vcxproj" on node 2 (Build target(s)).
+     1>ClCompile:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\CL.exe /c /ZI /nologo /W3 /WX- /Od /Oy- /D WIN32 /D _DEBUG /D _WINDOWS /D _USRDLL /D C_LIBRARY_EXPORTS /D _WINDLL /D _UNICODE /D UNICODE /Gm /EHsc /RTC1 /MDd /GS /fp:precise /Zc:wchar_t /Zc:forScope /Fo"Debug\\" /Fd"Debug\vc120.pdb" /Gd /TP /analyze- /errorReport:prompt ..\CCL\CCL.cpp
+         CCL.cpp
+       Link:
+         C:\Program Files (x86)\Microsoft Visual Studio 12.0\VC\bin\link.exe /ERRORREPORT:PROMPT /OUT:"D:\MyProjects\CANoe\C_Library\Debug\C_Library.dll" /INCREMENTAL /NOLOGO kernel32.lib user32.lib gdi32.lib winspool.lib comdlg32.lib advapi32.lib shell32.lib ole32.lib oleaut32.lib uuid.lib odbc32.lib odbccp32.lib /DEF:"../CCL/CCL.def" /MANIFEST /MANIFESTUAC:"level='asInvoker' uiAccess='false'" /manifest:embed /DEBUG /PDB:"D:\MyProjects\CANoe\C_Library\Debug\C_Library.pdb" /SUBSYSTEM:WINDOWS /TLBID:1 /DYNAMICBASE /NXCOMPAT /IMPLIB:"D:\MyProjects\CANoe\C_Library\Debug\C_Library.lib" /MACHINE:X86 /DLL Debug\CCL.obj
+         Debug\C_Library.obj
+            Creating library D:\MyProjects\CANoe\C_Library\Debug\C_Library.lib and object D:\MyProjects\CANoe\C_Library\Debug\C_Library.exp
+         C_Library.vcxproj -> D:\MyProjects\CANoe\C_Library\Debug\C_Library.dll
+     1>Done Building Project "D:\MyProjects\CANoe\C_Library\C_Library\C_Library.vcxproj" (Build target(s)).
+
+Build succeeded.
+
+Time Elapsed 00:00:01.69

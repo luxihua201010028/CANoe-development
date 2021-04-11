@@ -1,0 +1,868 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<testmodule starttime="2019-04-22 19:47:04" timestamp="   0.880000" verdicts="2_basic">
+  <violation timestamp="   0.880000" type="warning" result="warn">This is only a DEMO variant of CANoe!</violation>
+  <testgroup>
+    <testcase starttime="2019-04-22 19:47:04" timestamp="   0.880000">
+      <violation timestamp="   0.880000" type="warning" result="warn">This is only a DEMO variant of CANoe!</violation>
+      <teststep timestamp="   1.880000" level="1" type="auto" ident="Resume reason" result="na"> Elapsed time=1000ms (max=1000ms)</teststep>
+      <teststep timestamp="   1.880000" level="0" type="user" ident="" result="na">Check cycle time of message EngineData</teststep>
+      <teststep timestamp="   5.880000" level="1" type="auto" ident="Resume reason" result="na"> Elapsed time=4000ms (max=4000ms)</teststep>
+      <verdict time="2019-04-22 19:47:10" timestamp="   5.880000" endtime="2019-04-22 19:47:10" endtimestamp="   5.880000" result="pass" />
+      <title>TC-1: Check cycle time of msg EngineData</title>
+      <description>Check cycle time of message EngineData Check cycle time of message EngineData</description>
+      <checkstatistic checkname="Cycle Time Absolute" id="1_10001" seq="1" result="pass">
+        <spec>
+          <xinfo>
+            <name>Type of check</name>
+            <description>Cycle Time Absolute</description>
+          </xinfo>
+          <xinfo>
+            <name>Message</name>
+            <description>CAN message &apos;EngineData&apos; ID = 258 (0x102) on bus CAN</description>
+          </xinfo>
+          <xinfo>
+            <name>MinTime</name>
+            <description>40 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>MaxTime</name>
+            <description>60 ms</description>
+          </xinfo>
+        </spec>
+        <statistic>
+          <xinfo>
+            <name>Runtime of the statistic</name>
+            <description>4000 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Number of samples</name>
+            <description>80</description>
+          </xinfo>
+          <xinfo>
+            <name>Message ID</name>
+            <description>258 (0x102)</description>
+          </xinfo>
+          <xinfo>
+            <name>Minimal measured cycle time</name>
+            <description>50 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Maximal measured cycle time</name>
+            <description>50 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Average cycle time</name>
+            <description>50 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Failure ratio (in %)</name>
+            <description>0</description>
+          </xinfo>
+        </statistic>
+        <statistic title="Distribution of measured times" type="distribution">
+          <xinfo>
+            <name> &lt;= 30 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>30 ms - 32 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>32 ms - 34 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>34 ms - 36 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>36 ms - 38 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>38 ms - 40 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>40 ms - 42 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>42 ms - 44 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>44 ms - 46 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>46 ms - 48 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>48 ms - 50 ms</name>
+            <description>79</description>
+          </xinfo>
+          <xinfo>
+            <name>50 ms - 52 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>52 ms - 54 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>54 ms - 56 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>56 ms - 58 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>58 ms - 60 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>60 ms - 62 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>62 ms - 64 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>64 ms - 66 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>66 ms - 68 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>68 ms - 70 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name> &gt; 70 ms</name>
+            <description>0</description>
+          </xinfo>
+        </statistic>
+      </checkstatistic>
+    </testcase>
+    <testcase starttime="2019-04-22 19:47:10" timestamp="   5.880000">
+      <violation timestamp="   5.880000" type="warning" result="warn">This is only a DEMO variant of CANoe!</violation>
+      <teststep timestamp="   5.880000" level="0" type="user" ident="" result="na">Check cycle time of message VehicleData</teststep>
+      <teststep timestamp="   9.880000" level="1" type="auto" ident="Resume reason" result="na"> Elapsed time=4000ms (max=4000ms)</teststep>
+      <verdict time="2019-04-22 19:47:14" timestamp="   9.880000" endtime="2019-04-22 19:47:14" endtimestamp="   9.880000" result="pass" />
+      <title>TC-2: Check cycle time of msg VehicleData</title>
+      <description>Check cycle time of message VehicleData Check cycle time of message EngineData</description>
+      <checkstatistic checkname="Cycle Time Absolute" id="2_10002" seq="1" result="pass">
+        <spec>
+          <xinfo>
+            <name>Type of check</name>
+            <description>Cycle Time Absolute</description>
+          </xinfo>
+          <xinfo>
+            <name>Message</name>
+            <description>CAN message &apos;VehicleData&apos; ID = 168 (0xA8) on bus CAN</description>
+          </xinfo>
+          <xinfo>
+            <name>MinTime</name>
+            <description>40 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>MaxTime</name>
+            <description>60 ms</description>
+          </xinfo>
+        </spec>
+        <statistic>
+          <xinfo>
+            <name>Runtime of the statistic</name>
+            <description>4000 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Number of samples</name>
+            <description>80</description>
+          </xinfo>
+          <xinfo>
+            <name>Message ID</name>
+            <description>168 (0xA8)</description>
+          </xinfo>
+          <xinfo>
+            <name>Minimal measured cycle time</name>
+            <description>50 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Maximal measured cycle time</name>
+            <description>50 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Average cycle time</name>
+            <description>50 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Failure ratio (in %)</name>
+            <description>0</description>
+          </xinfo>
+        </statistic>
+        <statistic title="Distribution of measured times" type="distribution">
+          <xinfo>
+            <name> &lt;= 30 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>30 ms - 32 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>32 ms - 34 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>34 ms - 36 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>36 ms - 38 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>38 ms - 40 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>40 ms - 42 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>42 ms - 44 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>44 ms - 46 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>46 ms - 48 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>48 ms - 50 ms</name>
+            <description>79</description>
+          </xinfo>
+          <xinfo>
+            <name>50 ms - 52 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>52 ms - 54 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>54 ms - 56 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>56 ms - 58 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>58 ms - 60 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>60 ms - 62 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>62 ms - 64 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>64 ms - 66 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>66 ms - 68 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>68 ms - 70 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name> &gt; 70 ms</name>
+            <description>0</description>
+          </xinfo>
+        </statistic>
+      </checkstatistic>
+    </testcase>
+    <testcase starttime="2019-04-22 19:47:14" timestamp="   9.880000">
+      <violation timestamp="   9.880000" type="warning" result="warn">This is only a DEMO variant of CANoe!</violation>
+      <teststep timestamp="   9.880000" level="0" type="user" ident="" result="na">Check cycle time of message Gear_Info</teststep>
+      <teststep timestamp="  13.880000" level="1" type="auto" ident="Resume reason" result="na"> Elapsed time=4000ms (max=4000ms)</teststep>
+      <verdict time="2019-04-22 19:47:19" timestamp="  13.880000" endtime="2019-04-22 19:47:19" endtimestamp="  13.880000" result="pass" />
+      <title>TC-3: Check cycle time of message Gear_Info</title>
+      <description>Check cycle time of message Gear_Info Check cycle time of message Gear_Info</description>
+      <checkstatistic checkname="Cycle Time Absolute" id="3_10003" seq="1" result="pass">
+        <spec>
+          <xinfo>
+            <name>Type of check</name>
+            <description>Cycle Time Absolute</description>
+          </xinfo>
+          <xinfo>
+            <name>Message</name>
+            <description>CAN message &apos;Gear_Info&apos; ID = 715 (0x2CB) on bus CAN</description>
+          </xinfo>
+          <xinfo>
+            <name>MinTime</name>
+            <description>40 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>MaxTime</name>
+            <description>60 ms</description>
+          </xinfo>
+        </spec>
+        <statistic>
+          <xinfo>
+            <name>Runtime of the statistic</name>
+            <description>4000 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Number of samples</name>
+            <description>80</description>
+          </xinfo>
+          <xinfo>
+            <name>Message ID</name>
+            <description>715 (0x2CB)</description>
+          </xinfo>
+          <xinfo>
+            <name>Minimal measured cycle time</name>
+            <description>49.75 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Maximal measured cycle time</name>
+            <description>50.25 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Average cycle time</name>
+            <description>50 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Failure ratio (in %)</name>
+            <description>0</description>
+          </xinfo>
+        </statistic>
+        <statistic title="Distribution of measured times" type="distribution">
+          <xinfo>
+            <name> &lt;= 30 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>30 ms - 32 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>32 ms - 34 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>34 ms - 36 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>36 ms - 38 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>38 ms - 40 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>40 ms - 42 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>42 ms - 44 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>44 ms - 46 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>46 ms - 48 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>48 ms - 50 ms</name>
+            <description>71</description>
+          </xinfo>
+          <xinfo>
+            <name>50 ms - 52 ms</name>
+            <description>8</description>
+          </xinfo>
+          <xinfo>
+            <name>52 ms - 54 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>54 ms - 56 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>56 ms - 58 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>58 ms - 60 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>60 ms - 62 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>62 ms - 64 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>64 ms - 66 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>66 ms - 68 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>68 ms - 70 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name> &gt; 70 ms</name>
+            <description>0</description>
+          </xinfo>
+        </statistic>
+      </checkstatistic>
+    </testcase>
+    <testcase starttime="2019-04-22 19:47:19" timestamp="  13.880000">
+      <violation timestamp="  13.880000" type="warning" result="warn">This is only a DEMO variant of CANoe!</violation>
+      <teststep timestamp="  13.880000" level="0" type="user" ident="" result="na">Check cycle time of message Ignition_Info</teststep>
+      <violation timestamp="  13.945000" type="condition" result="fail" checkId="4_10004" checkTitle="Cycle Time Absolute" detectedAt="13.94">Maximum cycle time violation for CAN message &apos;Ignition_Info&apos; ID = 341 (0x155) on bus CAN.</violation>
+      <teststep timestamp="  17.880000" level="1" type="auto" ident="Resume reason" result="na"> Elapsed time=4000ms (max=4000ms)</teststep>
+      <verdict time="2019-04-22 19:47:24" timestamp="  17.880000" endtime="2019-04-22 19:47:24" endtimestamp="  17.880000" result="fail" />
+      <title>TC-4: Check cycle time of message Ignition_Info</title>
+      <description>Check cycle time of message Ignition_Info Check cycle time of message Ignition_Info</description>
+      <checkstatistic checkname="Cycle Time Absolute" id="4_10004" seq="1" result="fail">
+        <spec>
+          <xinfo>
+            <name>Type of check</name>
+            <description>Cycle Time Absolute</description>
+          </xinfo>
+          <xinfo>
+            <name>Message</name>
+            <description>CAN message &apos;Ignition_Info&apos; ID = 341 (0x155) on bus CAN</description>
+          </xinfo>
+          <xinfo>
+            <name>MinTime</name>
+            <description>40 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>MaxTime</name>
+            <description>60 ms</description>
+          </xinfo>
+        </spec>
+        <statistic>
+          <xinfo>
+            <name>Runtime of the statistic</name>
+            <description>4000 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Number of failures</name>
+            <description>1</description>
+          </xinfo>
+          <xinfo>
+            <name>Message ID</name>
+            <description>341 (0x155)</description>
+          </xinfo>
+          <xinfo>
+            <name>Minimal measured cycle time</name>
+            <description>0 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Maximal measured cycle time</name>
+            <description>0 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Average cycle time</name>
+            <description>0 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Failure ratio (in %)</name>
+            <description>0</description>
+          </xinfo>
+        </statistic>
+        <statistic title="Distribution of measured times" type="distribution">
+          <xinfo>
+            <name> &lt;= 30 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>30 ms - 32 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>32 ms - 34 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>34 ms - 36 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>36 ms - 38 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>38 ms - 40 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>40 ms - 42 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>42 ms - 44 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>44 ms - 46 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>46 ms - 48 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>48 ms - 50 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>50 ms - 52 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>52 ms - 54 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>54 ms - 56 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>56 ms - 58 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>58 ms - 60 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>60 ms - 62 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>62 ms - 64 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>64 ms - 66 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>66 ms - 68 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>68 ms - 70 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name> &gt; 70 ms</name>
+            <description>0</description>
+          </xinfo>
+        </statistic>
+      </checkstatistic>
+    </testcase>
+    <testcase starttime="2019-04-22 19:47:24" timestamp="  17.880000">
+      <violation timestamp="  17.880000" type="warning" result="warn">This is only a DEMO variant of CANoe!</violation>
+      <teststep timestamp="  17.880000" level="0" type="user" ident="" result="na">Check cycle time of message Light_Info</teststep>
+      <teststep timestamp="  21.880000" level="1" type="auto" ident="Resume reason" result="na"> Elapsed time=4000ms (max=4000ms)</teststep>
+      <verdict time="2019-04-22 19:47:28" timestamp="  21.880000" endtime="2019-04-22 19:47:28" endtimestamp="  21.880000" result="pass" />
+      <title>TC-5: Check cycle time of message Light_Info</title>
+      <description>Check cycle time of message Light_Info Check cycle time of message Light_Info</description>
+      <checkstatistic checkname="Cycle Time Absolute" id="5_10005" seq="1" result="pass">
+        <spec>
+          <xinfo>
+            <name>Type of check</name>
+            <description>Cycle Time Absolute</description>
+          </xinfo>
+          <xinfo>
+            <name>Message</name>
+            <description>CAN message &apos;Light_Info&apos; ID = 338 (0x152) on bus CAN</description>
+          </xinfo>
+          <xinfo>
+            <name>MinTime</name>
+            <description>490 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>MaxTime</name>
+            <description>510 ms</description>
+          </xinfo>
+        </spec>
+        <statistic>
+          <xinfo>
+            <name>Runtime of the statistic</name>
+            <description>4000 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Number of samples</name>
+            <description>8</description>
+          </xinfo>
+          <xinfo>
+            <name>Message ID</name>
+            <description>338 (0x152)</description>
+          </xinfo>
+          <xinfo>
+            <name>Minimal measured cycle time</name>
+            <description>500 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Maximal measured cycle time</name>
+            <description>500 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Average cycle time</name>
+            <description>500 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Failure ratio (in %)</name>
+            <description>0</description>
+          </xinfo>
+        </statistic>
+        <statistic title="Distribution of measured times" type="distribution">
+          <xinfo>
+            <name> &lt;= 480 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>480 ms - 482 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>482 ms - 484 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>484 ms - 486 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>486 ms - 488 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>488 ms - 490 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>490 ms - 492 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>492 ms - 494 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>494 ms - 496 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>496 ms - 498 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>498 ms - 500 ms</name>
+            <description>7</description>
+          </xinfo>
+          <xinfo>
+            <name>500 ms - 502 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>502 ms - 504 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>504 ms - 506 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>506 ms - 508 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>508 ms - 510 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>510 ms - 512 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>512 ms - 514 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>514 ms - 516 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>516 ms - 518 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name>518 ms - 520 ms</name>
+            <description>0</description>
+          </xinfo>
+          <xinfo>
+            <name> &gt; 520 ms</name>
+            <description>0</description>
+          </xinfo>
+        </statistic>
+      </checkstatistic>
+    </testcase>
+    <title>Check msg cycle time</title>
+    <description>Check cycle time of message</description>
+  </testgroup>
+  <testgroup>
+    <testcase starttime="2019-04-22 19:47:28" timestamp="  21.880000">
+      <violation timestamp="  21.880000" type="warning" result="warn">This is only a DEMO variant of CANoe!</violation>
+      <teststep timestamp="  21.880000" level="0" type="user" ident="" result="na">Check DLC of message Lock_Info</teststep>
+      <teststep timestamp="  25.880000" level="1" type="auto" ident="Resume reason" result="na"> Elapsed time=4000ms (max=4000ms)</teststep>
+      <verdict time="2019-04-22 19:47:33" timestamp="  25.880000" endtime="2019-04-22 19:47:33" endtimestamp="  25.880000" result="pass" />
+      <title>TC-6: Check DLC of message Lock_Info</title>
+      <description>Check DLC of message Lock_Info Check DLC of message Lock_Info</description>
+      <checkstatistic checkname="DLC" id="6_10006" seq="1" result="pass">
+        <spec>
+          <xinfo>
+            <name>Type of check</name>
+            <description>DLC</description>
+          </xinfo>
+          <xinfo>
+            <name>Message</name>
+            <description>CAN message &apos;Lock_Info&apos; ID = 792 (0x318) on bus CAN</description>
+          </xinfo>
+          <xinfo>
+            <name>DLC</name>
+            <description>8</description>
+          </xinfo>
+        </spec>
+        <statistic>
+          <xinfo>
+            <name>Runtime of the statistic</name>
+            <description>4000 ms</description>
+          </xinfo>
+          <xinfo>
+            <name>Number of samples</name>
+            <description>40</description>
+          </xinfo>
+        </statistic>
+      </checkstatistic>
+    </testcase>
+    <title>Check msg DLC</title>
+    <description>Check the DLC of message</description>
+  </testgroup>
+  <testgroup>
+    <testcase starttime="2019-04-22 19:47:33" timestamp="  25.880000">
+      <violation timestamp="  25.880000" type="warning" result="warn">This is only a DEMO variant of CANoe!</violation>
+      <teststep timestamp="  29.880000" level="1" type="auto" ident="Resume reason" result="na"> Elapsed time=4000ms (max=4000ms)</teststep>
+      <teststep timestamp="  29.880000" level="0" type="user" ident="" result="pass">No undefined message detacted</teststep>
+      <teststep timestamp="  30.380000" level="1" type="auto" ident="Resume reason" result="na"> Elapsed time=500ms (max=500ms)</teststep>
+      <verdict time="2019-04-22 19:47:38" timestamp="  30.380000" endtime="2019-04-22 19:47:38" endtimestamp="  30.380000" result="pass" />
+      <title>TC-7: Check CAN channel for undefined messages</title>
+      <ident>TC-7</ident>
+    </testcase>
+    <title>Check undefined msg</title>
+    <description>Check the undefined messages</description>
+  </testgroup>
+  <testgroup>
+    <testcase starttime="2019-04-22 19:47:38" timestamp="  30.380000">
+      <violation timestamp="  30.380000" type="warning" result="warn">This is only a DEMO variant of CANoe!</violation>
+      <teststep timestamp="  30.380000" level="0" type="user" ident="" result="na">Check Engine Speed</teststep>
+      <teststep timestamp="  34.380000" level="1" type="auto" ident="Resume reason" result="na"> Elapsed time=4000ms (max=4000ms)</teststep>
+      <teststep timestamp="  34.380000" level="1" type="auto" ident="Resume reason" result="na">Immediately resumed on EngSpeed == 2000  (max=500ms)</teststep>
+      <teststep timestamp="  34.380000" level="0" type="user" ident="" result="pass">Engine Speed is Correct!</teststep>
+      <verdict time="2019-04-22 19:47:42" timestamp="  34.380000" endtime="2019-04-22 19:47:42" endtimestamp="  34.380000" result="pass" />
+      <title>TC-8: Check Engine Speed</title>
+      <description>Check the engine speed after setup Check the engine speed after setup</description>
+    </testcase>
+    <title>Function test</title>
+    <description>Check the engine speed after setup</description>
+  </testgroup>
+  <verdict time="2019-04-22 19:47:42" timestamp="  34.380000" endtime="2019-04-22 19:47:42" endtimestamp="  34.380000" result="fail" />
+  <title>NetworkTester_Csharp</title>
+  <testlogfiles>
+  </testlogfiles>
+  <engineer>
+    <xinfo>
+      <name>Windows Login Name</name>
+      <description>ZKN1SZH</description>
+    </xinfo>
+  </engineer>
+  <testsetup>
+    <xinfo>
+      <name>Version</name>
+      <description>CANoe.ISO11783.J1939.CANaero.CANopen.LIN.MOST.FlexRay.J1587.Ethernet.AFDX.A429.Scope 11.0.55 (SP2)</description>
+    </xinfo>
+    <xinfo>
+      <name>Configuration</name>
+      <description>C:\Users\ZKN1SZH\Desktop\TUP_Sources20190412\TUP_Sources\Chapter_20\Source\11.0\Vehicle_System_Simulation_Test\Vehicle_System_CAN_Test.cfg</description>
+    </xinfo>
+    <xinfo>
+      <name>Database VehicleSystem on CAN</name>
+      <description>C:\Users\ZKN1SZH\Desktop\TUP_Sources20190412\TUP_Sources\Chapter_20\Source\11.0\Vehicle_System_Simulation_Test\CANdb\VehicleSystem.dbc (2018-02-22 20:08:29)</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Name</name>
+      <description>NetworkTester_Csharp</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module File</name>
+      <description>C:\Users\ZKN1SZH\Desktop\TUP_Sources20190412\TUP_Sources\Chapter_20\Source\11.0\Vehicle_System_Simulation_Test\C#\NetworkTester_Csharp\NetworkTester_Cs\NetworkTester_Cs\NetworkTest_Cs.cs</description>
+    </xinfo>
+    <xinfo>
+      <name>Last modification of Test Module File</name>
+      <description>2018-05-06, 18:39:04</description>
+    </xinfo>
+    <xinfo>
+      <name>Test Module Library (CAPL)</name>
+      <description>C:\Users\ZKN1SZH\Desktop\TUP_Sources20190412\TUP_Sources\Chapter_20\Source\11.0\Vehicle_System_Simulation_Test\C#\NetworkTester_Csharp\NetworkTester_Cs\NetworkTester_Cs\CAPLTestLib.can</description>
+    </xinfo>
+    <xinfo>
+      <name>Windows Computer Name</name>
+      <description>SGHZ001016908</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module J1939TestServiceLibraryNL</name>
+      <description>J1939 Test Service Library for CANoe, Version 11.0.55.0, C:\Program Files\Vector CANoe 11.0\Exec32\J1939TestServiceLibraryNL.dll</description>
+    </xinfo>
+    <xinfo>
+      <name>Nodelayer Module CANOEILNLVECTOR</name>
+      <description>CANoe Interaction Layer NL (Vector) Version 3.16.47 (Jul  4 2017 16:10:44) , C:\Program Files\Vector CANoe 11.0\Exec32\CANOEILNLVECTOR.DLL</description>
+    </xinfo>
+  </testsetup>
+</testmodule>
+<!--footprint="ab78eb6eb5d111c2c5956925c18a09cb" version="1"-->

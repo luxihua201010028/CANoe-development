@@ -1,0 +1,1 @@
+C:\Users\Public\Documents\Vector\CANoe\TUP_Sources\Chapter_20\Source\Vehicle_System_Simulation_Test\C#\NetworkTester_Csharp\NetworkTester_Cs\NetworkTester_Cs\obj\Debug\NetworkTester_Cs.csprojResolveAssemblyReference.cache

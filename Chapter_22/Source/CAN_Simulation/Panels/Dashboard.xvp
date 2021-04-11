@@ -1,0 +1,164 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Dashboard">
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1" Children="Controls" ControlName="Input/Output Box">
+      <Property Name="Name">TextBoxControl1</Property>
+      <Property Name="Size">36, 13</Property>
+      <Property Name="Location">350, 130</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="BoxForeColor">Red</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="TextBackColor">Black</Property>
+      <Property Name="ValueDisplay">Symbolic</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Microsoft Sans Serif, 8.25pt, style=Bold</Property>
+      <Property Name="AlarmUpperFont">Microsoft Sans Serif, 8.25pt, style=Bold</Property>
+      <Property Name="AlarmLowerFont">Microsoft Sans Serif, 8.25pt, style=Bold</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="DescriptionText">Gear:</Property>
+      <Property Name="BoxBorderStyle">None</Property>
+      <Property Name="BoxBackColor">ControlText</Property>
+      <Property Name="TextForeColor">Red</Property>
+      <Property Name="DescriptionSize">67, 13</Property>
+      <Property Name="SymbolConfiguration">4;16;BCM;;;Gear;1;;;-1</Property>
+      <Property Name="TabIndex">30</Property>
+      <Property Name="ReadOnlyControl">True</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.MeterControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="MeterControl6" ControlName="Sig:EngSpeed">
+      <Property Name="Name">MeterControl6</Property>
+      <Property Name="Size">125, 139</Property>
+      <Property Name="Location">185, 183</Property>
+      <Property Name="ScaleMin">99</Property>
+      <Property Name="ScaleMax">7500</Property>
+      <Property Name="SweepAngleFrom">-112</Property>
+      <Property Name="SweepAngleTo">57</Property>
+      <Property Name="NeedleColor">Red</Property>
+      <Property Name="NeedleShape">TriangleWithPoint</Property>
+      <Property Name="AlarmLowerColor">Blue</Property>
+      <Property Name="AlarmLowerLimit">99</Property>
+      <Property Name="AlarmUpperLimit">99</Property>
+      <Property Name="SymbolConfiguration">4;2;PowerTrain;Engine;EngineData;EngSpeed;1;CAN;;-1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ClockControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="ClockControl1" ControlName="Clock Control">
+      <Property Name="Name">ClockControl1</Property>
+      <Property Name="Size">75, 28</Property>
+      <Property Name="Location">311, 102</Property>
+      <Property Name="DisplaySeconds">False</Property>
+      <Property Name="SegmentStrength">1</Property>
+      <Property Name="SymbolConfiguration">
+      </Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl10" Children="Controls" ControlName="StaticTextControl10">
+      <Property Name="Name">StaticTextControl10</Property>
+      <Property Name="Size">36, 13</Property>
+      <Property Name="Location">350, 148</Property>
+      <Property Name="BackColor">2, 2, 2</Property>
+      <Property Name="Font">Microsoft Sans Serif, 8pt, style=Bold</Property>
+      <Property Name="Text">km/h</Property>
+      <Property Name="ForeColor">Red</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl23" Children="Controls" ControlName="CarSpeedEuropean">
+      <Property Name="Name">TextBoxControl23</Property>
+      <Property Name="Size">35, 13</Property>
+      <Property Name="Location">302, 147</Property>
+      <Property Name="AlarmUpperTextColor">Black</Property>
+      <Property Name="BoxForeColor">Red</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">26, 26, 26</Property>
+      <Property Name="BoxTextAlign">Right</Property>
+      <Property Name="TextBackColor">0, 0, 64</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">Red</Property>
+      <Property Name="AlarmLowerTextColor">Black</Property>
+      <Property Name="BoxFont">Microsoft Sans Serif, 8pt, style=Bold</Property>
+      <Property Name="AlarmUpperFont">Microsoft Sans Serif, 8pt, style=Bold</Property>
+      <Property Name="AlarmLowerFont">Microsoft Sans Serif, 8pt, style=Bold</Property>
+      <Property Name="AlarmGeneralSettings">1;2;0;0</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="DescriptionText">VehicleSpeed:</Property>
+      <Property Name="BoxBorderStyle">None</Property>
+      <Property Name="BoxBackColor">Black</Property>
+      <Property Name="DescriptionSize">102, 13</Property>
+      <Property Name="SymbolConfiguration">4;2;PowerTrain;IPC;Vehicledata;VehicleSpeed;1;CAN;;-1</Property>
+      <Property Name="TabIndex">23</Property>
+      <Property Name="ReadOnlyControl">True</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.MeterControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="MeterControl24" ControlName="Sig:EngineTemp">
+      <Property Name="Name">MeterControl24</Property>
+      <Property Name="Size">86, 94</Property>
+      <Property Name="Location">83, 209</Property>
+      <Property Name="ScaleMax">150</Property>
+      <Property Name="SweepAngleTo">-50</Property>
+      <Property Name="NeedleColor">Red</Property>
+      <Property Name="NeedleShape">TriangleWithPoint</Property>
+      <Property Name="AlarmLowerColor">Blue</Property>
+      <Property Name="AlarmLowerLimit">0</Property>
+      <Property Name="AlarmUpperLimit">0</Property>
+      <Property Name="SymbolConfiguration">4;2;PowerTrain;Engine;EngineData;EngTemp;1;CAN;;-1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.MeterControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="MeterControl25" ControlName="Sig:PetrolLevel">
+      <Property Name="Name">MeterControl25</Property>
+      <Property Name="Size">99, 82</Property>
+      <Property Name="Location">492, 219</Property>
+      <Property Name="ScaleMax">255</Property>
+      <Property Name="SweepAngleFrom">130</Property>
+      <Property Name="SweepAngleTo">55</Property>
+      <Property Name="NeedleColor">Red</Property>
+      <Property Name="NeedleShape">TriangleWithPoint</Property>
+      <Property Name="AlarmLowerColor">Blue</Property>
+      <Property Name="AlarmLowerLimit">0</Property>
+      <Property Name="AlarmUpperLimit">0</Property>
+      <Property Name="SymbolConfiguration">4;2;PowerTrain;Engine;EngineData;PetrolLevel;1;CAN;;-1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControlBSI26" ControlName="DashboardTurnIndRightDisplay">
+      <Property Name="Name">SwitchControlBSI26</Property>
+      <Property Name="Size">32, 22</Property>
+      <Property Name="Location">399, 126</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="ImageFile">Bitmaps\LEDTurnRight.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;BCM;;;Right_Turn;1;;;-1</Property>
+      <Property Name="TabIndex">26</Property>
+      <Property Name="ReadOnlyControl">True</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControlBSI27" ControlName="DashboardTurnIndLeftDisplay">
+      <Property Name="Name">SwitchControlBSI27</Property>
+      <Property Name="Size">30, 22</Property>
+      <Property Name="Location">257, 126</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="ImageFile">Bitmaps\LEDTurnLeft.bmp</Property>
+      <Property Name="SymbolConfiguration">4;16;BCM;;;Left_Turn;1;;;-1</Property>
+      <Property Name="TabIndex">27</Property>
+      <Property Name="ReadOnlyControl">True</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.MeterControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="MeterControl28" ControlName="CarSpeedEuropean">
+      <Property Name="Name">MeterControl28</Property>
+      <Property Name="Size">126, 136</Property>
+      <Property Name="Location">362, 188</Property>
+      <Property Name="ScaleMin">7</Property>
+      <Property Name="ScaleMax">200</Property>
+      <Property Name="SweepAngleFrom">-113</Property>
+      <Property Name="SweepAngleTo">93</Property>
+      <Property Name="NeedleColor">Red</Property>
+      <Property Name="NeedleShape">TriangleWithPoint</Property>
+      <Property Name="AlarmLowerColor">Blue</Property>
+      <Property Name="AlarmLowerLimit">7</Property>
+      <Property Name="AlarmUpperLimit">7</Property>
+      <Property Name="SymbolConfiguration">4;2;PowerTrain;IPC;Vehicledata;VehicleSpeed;1;CAN;;-1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.PictureBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=9.0.111.0, Culture=neutral, PublicKeyToken=null" Name="PictureBoxControl29" ControlName="PictureBoxControl29">
+      <Property Name="Name">PictureBoxControl29</Property>
+      <Property Name="Size">666, 318</Property>
+      <Property Name="Location">3, 3</Property>
+      <Property Name="ImageFile">Bitmaps\IPC_BackGround.bmp</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">669, 325</Property>
+    <Property Name="BackColor">0, 0, 64</Property>
+    <Property Name="Panel">Panel</Property>
+  </Object>
+</Panel>

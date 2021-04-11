@@ -1,0 +1,16 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+// Reaction to receipt of the CAN message M1
+on message Msg1 {
+  // Read out a bus signal and
+  // set the system variable
+  SysSetVariableInt(sysvar::MyNamespace::svLight, this.bsSwitch);
+}

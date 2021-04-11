@@ -1,0 +1,354 @@
+/*@!Encoding:1252*/
+includes
+{
+  //To add the head files
+}
+
+variables
+{
+  mstimer Crank;
+  int flashPeriod=500;
+  int msgsendperiod=1;
+  int preturnstatus;
+  msTimer leftflash,rightflash;
+  message Driver_Info driver;
+  
+  message * msg_01;
+  message * msg_02;
+  message * msg_03;  
+  msTimer msg_01_timer;
+  msTimer msg_02_timer;
+  msTimer msg_03_timer; 
+}
+
+on start
+{
+  canOffline(3); //disconnect the node from the newtwork
+}
+
+
+on sysvar_update Vehicle_Key::Key_State
+{
+  $Ignition_Info::KeyState=@this;
+  if(@this==3)
+  {
+    @Vehicle_Control::Speed_Up=0;
+    setTimer(Crank,800);   //Simulate the crank behavior    
+  }
+}
+
+on timer Crank
+{
+  $KeyState=2; //Simulate the crank behavior
+  @sysvar::Vehicle_Key::Key_State =2;
+}
+
+on sysvar_update Vehicle_Key::Car_Driver
+{
+  //Set the value of driver ID based on system variable Car_Driver
+  if(@this==1)
+  {
+    driver.byte(0)=0;
+  }
+  else if(@this==2)
+  {
+    driver.byte(0)=0x1;
+  }
+  output(driver);
+}
+
+on sysvar_update Vehicle_Key::Unlock_Car
+{
+  if(@this==1)
+  {
+    canOnline(3); //restore the connection to the network
+    $LockStatus=1;
+    @Vehicle_Key::Car_Driver=2;
+  }
+}
+
+on sysvar_update Vehicle_Key::Lock_Car
+{
+  if(@this==1)
+  {
+    $LockStatus=0;
+  }
+  canOffline(3); //disconnect the node from the network
+}
+
+void LightOFF(void)
+{
+  //Initilize the light status
+  $VehicleLight=0;
+  preturnstatus=0;
+  $LightStatus=0;  
+}
+
+////////////////////To realize the functions of turn left,turn right and Hazards///////////////
+on sysvar Vehicle_Control::Left_Turn_Enable
+{
+  if(@this==1)
+  {
+    @sysvar::Vehicle_Control::Right_Turn_Enable=0;
+    $VehicleLight=1;preturnstatus=1;
+    settimer(leftflash,flashPeriod);
+  }
+  else
+  {
+    if(@Vehicle_Control::Right_Turn_Enable==0 && @Vehicle_Control::Hazards_Enable==0)
+    {
+      LightOFF();
+    }
+    cancelTimer(leftflash);
+    @Cluster::Left_Turn_Indicator=0;
+  }
+}
+
+on timer leftflash
+{
+  $LightStatus=!$LightStatus;@Cluster::Left_Turn_Indicator=!@Cluster::Left_Turn_Indicator;
+  setTimer(leftflash,flashPeriod);
+}
+
+on sysvar Vehicle_Control::Right_Turn_Enable
+{
+  if(@this==1)
+  {
+    @sysvar::Vehicle_Control::Left_Turn_Enable=0;
+    $VehicleLight=2;preturnstatus=2;
+    settimer(rightflash,flashPeriod);
+  }
+  else
+  {
+    if(@Vehicle_Control::Left_Turn_Enable==0 && @Vehicle_Control::Hazards_Enable==0)
+    {
+      LightOFF();
+    }
+    cancelTimer(rightflash);
+    @Cluster::Right_Turn_Indicator=0;
+  }
+}
+
+on timer rightflash
+{
+  $LightStatus=!$LightStatus;@Cluster::Right_Turn_Indicator=!@Cluster::Right_Turn_Indicator;
+  setTimer(rightflash,flashPeriod);
+}
+
+on sysvar Vehicle_Control::Hazards_Enable
+{
+  if(@this==1)
+  {
+    $VehicleLight=3;@Cluster::Left_Turn_Indicator=1;@Cluster::Right_Turn_Indicator=1;
+    settimer(leftflash,flashPeriod);setTimer(rightflash,flashPeriod);
+  }
+  else
+  {
+    $VehicleLight=preturnstatus;
+    switch(preturnstatus)
+    {
+      case 1:
+        cancelTimer(rightflash);
+        @Cluster::Right_Turn_Indicator=0;
+      break;
+      case 2:
+        cancelTimer(leftflash);
+        @Cluster::Left_Turn_Indicator=0;
+      break;
+      case 0:
+        cancelTimer(rightflash);
+        cancelTimer(leftflash);
+        $LightStatus=0;
+        @Cluster::Left_Turn_Indicator=0;
+        @Cluster::Right_Turn_Indicator=0;
+      break;
+    }
+  }
+}
+/*****************************************************************************
+*
+*             Following Part for Lost Message & Customized Message
+*
+*****************************************************************************/
+
+on sysvar sysvar::LostMessage::BCM_Ignition_Info
+{
+  switch (@this)
+  {
+    case 0:
+    {
+      ILFaultInjectionEnableMsg(Ignition_Info);
+      break;
+    }
+    case 1:
+    {
+      ILFaultInjectionDisableMsg(Ignition_Info);
+      break;
+    }
+  }
+}
+
+on sysvar sysvar::LostMessage::BCM_Light_Info
+{
+  switch (@this)
+  {
+    case 0:
+    {
+      ILFaultInjectionEnableMsg(Light_Info);
+      break;
+    }
+    case 1:
+    {
+      ILFaultInjectionDisableMsg(Light_Info);
+      break;
+    }
+  }
+}
+
+on sysvar sysvar::LostMessage::BCM_Lock_Info
+{
+  switch (@this)
+  {
+    case 0:
+    {
+      ILFaultInjectionEnableMsg(Lock_Info);
+      break;
+    }
+    case 1:
+    {
+      ILFaultInjectionDisableMsg(Lock_Info);
+      break;
+    }
+  }
+}
+
+
+
+on sysvar sysvar::Custom_Msg::Msg_01_Send
+{
+  switch (@this)
+  {
+    case 0:  
+    {
+      cancelTimer(msg_01_timer);
+      break;
+    }
+    case 1: 
+    {
+      if (@sysvar::Custom_Msg::Msg_01_CycleTime == 0 ||
+        @sysvar::Custom_Msg::Msg_01_ID == 0)
+      {
+        write("ERROR_INFO: CANID/CycleTime CAN'T Be ZERO!!");
+      }
+      else
+      {
+        msg_01.can = 1;
+        msg_01.id = @sysvar::Custom_Msg::Msg_01_ID;
+        msg_01.dlc = @sysvar::Custom_Msg::Msg_01_DLC;
+        msg_01.byte(0) = @sysvar::Custom_Msg::Msg_01_Byte0;
+        msg_01.byte(1) = @sysvar::Custom_Msg::Msg_01_Byte1;
+        msg_01.byte(2) = @sysvar::Custom_Msg::Msg_01_Byte2;
+        msg_01.byte(3) = @sysvar::Custom_Msg::Msg_01_Byte3;
+        msg_01.byte(4) = @sysvar::Custom_Msg::Msg_01_Byte4;
+        msg_01.byte(5) = @sysvar::Custom_Msg::Msg_01_Byte5;
+        msg_01.byte(6) = @sysvar::Custom_Msg::Msg_01_Byte6;
+        msg_01.byte(7) = @sysvar::Custom_Msg::Msg_01_Byte7;
+        output(msg_01);
+        setTimer(msg_01_timer, @sysvar::Custom_Msg::Msg_01_CycleTime);
+      }
+      break;
+    }
+  }
+}
+
+on timer msg_01_timer
+{
+  output(msg_01);
+  setTimer(msg_01_timer, @sysvar::Custom_Msg::Msg_01_CycleTime);
+}
+
+on sysvar sysvar::Custom_Msg::Msg_02_Send
+{
+  switch (@this)
+  {
+    case 0:  
+    {
+      cancelTimer(msg_02_timer);
+      break;
+    }
+    case 1: 
+    {
+      if (@sysvar::Custom_Msg::Msg_02_CycleTime == 0 ||
+        @sysvar::Custom_Msg::Msg_02_ID == 0)
+      {
+        write("ERROR_INFO: CANID/CycleTime CAN'T Be ZERO!!");
+      }
+      else
+      {
+        msg_02.can = 1;
+        msg_02.id = @sysvar::Custom_Msg::Msg_02_ID;
+        msg_02.dlc = @sysvar::Custom_Msg::Msg_02_DLC;
+        msg_02.byte(0) = @sysvar::Custom_Msg::Msg_02_Byte0;
+        msg_02.byte(1) = @sysvar::Custom_Msg::Msg_02_Byte1;
+        msg_02.byte(2) = @sysvar::Custom_Msg::Msg_02_Byte2;
+        msg_02.byte(3) = @sysvar::Custom_Msg::Msg_02_Byte3;
+        msg_02.byte(4) = @sysvar::Custom_Msg::Msg_02_Byte4;
+        msg_02.byte(5) = @sysvar::Custom_Msg::Msg_02_Byte5;
+        msg_02.byte(6) = @sysvar::Custom_Msg::Msg_02_Byte6;
+        msg_02.byte(7) = @sysvar::Custom_Msg::Msg_02_Byte7;
+        output(msg_02);
+        setTimer(msg_02_timer, @sysvar::Custom_Msg::Msg_02_CycleTime);
+      }
+      break;
+    }
+  }
+}
+
+on timer msg_02_timer
+{
+  output(msg_02);
+  setTimer(msg_02_timer, @sysvar::Custom_Msg::Msg_02_CycleTime);
+}
+
+on sysvar sysvar::Custom_Msg::Msg_03_Send
+{
+  switch (@this)
+  {
+    case 0:  
+    {
+      cancelTimer(msg_03_timer);
+      break;
+    }
+    case 1: 
+    {
+      if (@sysvar::Custom_Msg::Msg_03_CycleTime == 0 ||
+        @sysvar::Custom_Msg::Msg_03_ID == 0)
+      {
+        write("ERROR_INFO: CANID/CycleTime CAN'T Be ZERO!!");
+      }
+      else
+      {
+        msg_03.can = 1;
+        msg_03.id = @sysvar::Custom_Msg::Msg_03_ID;
+        msg_03.dlc = @sysvar::Custom_Msg::Msg_03_DLC;
+        msg_03.byte(0) = @sysvar::Custom_Msg::Msg_03_Byte0;
+        msg_03.byte(1) = @sysvar::Custom_Msg::Msg_03_Byte1;
+        msg_03.byte(2) = @sysvar::Custom_Msg::Msg_03_Byte2;
+        msg_03.byte(3) = @sysvar::Custom_Msg::Msg_03_Byte3;
+        msg_03.byte(4) = @sysvar::Custom_Msg::Msg_03_Byte4;
+        msg_03.byte(5) = @sysvar::Custom_Msg::Msg_03_Byte5;
+        msg_03.byte(6) = @sysvar::Custom_Msg::Msg_03_Byte6;
+        msg_03.byte(7) = @sysvar::Custom_Msg::Msg_03_Byte7;
+        output(msg_03);
+        setTimer(msg_03_timer, @sysvar::Custom_Msg::Msg_03_CycleTime);
+      }
+      break;
+    }
+  }
+}
+
+on timer msg_03_timer
+{
+  output(msg_03);
+  setTimer(msg_03_timer, @sysvar::Custom_Msg::Msg_03_CycleTime);
+}

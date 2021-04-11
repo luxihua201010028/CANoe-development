@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<canoefdxdescription version="1.0">
+  <datagroup groupID="1" size="8">
+    <identifier>FDXDataRead</identifier>
+    <item offset="0" size="2" type="uint16">
+      <identifier>SigEngSpeed</identifier>
+      <signal name="EngSpeed" msg="EngineData" database="VehicleSystem" bus="CAN" channel="CAN1" dir="auto" value="raw" />
+    </item>
+    <item offset="2" size="2" type="uint16">
+      <identifier>SigVehicleSpeed</identifier>
+      <signal name="VehicleSpeed" msg="VehicleData" database="VehicleSystem" bus="CAN" channel="CAN1" dir="auto" value="raw" />
+    </item>
+    <item offset="4" size="1" type="uint8">
+      <identifier>SigKeyState</identifier>
+      <signal name="KeyState" msg="Ignition_Info" database="VehicleSystem" bus="CAN" channel="CAN1" dir="auto" value="raw" />
+    </item>
+    <item offset="5" size="1" type="uint8">
+      <identifier>VarHazards</identifier>
+      <sysvar name="Hazards_Enable" namespace="Vehicle_Control" value="raw" />
+    </item>
+    <item offset="6" size="1" type="uint8">
+      <identifier>VarGear</identifier>
+      <sysvar name="Gear" namespace="Vehicle_Control" value="raw" />
+    </item>
+    <item offset="7" size="1" type="uint8">
+      <identifier>VarUnLockCar</identifier>
+      <sysvar name="Unlock_Car" namespace="Vehicle_Key" value="raw" />
+    </item>
+  </datagroup>
+  <datagroup groupID="2" size="8">
+    <identifier>FDXDataWrite</identifier>
+    <item offset="0" size="2" type="uint16">
+      <identifier>SigVehicleSpeed</identifier>
+      <signal name="VehicleSpeed" msg="VehicleData" database="VehicleSystem" bus="CAN" channel="CAN1" dir="auto" value="raw" />
+    </item>
+    <item offset="2" size="2" type="uint16">
+      <identifier>SigEngSpeed</identifier>
+      <signal name="EngSpeed" msg="EngineData" database="VehicleSystem" bus="CAN" channel="CAN1" dir="auto" value="raw" />
+    </item>
+    <item offset="4" size="1" type="uint8">
+      <identifier>SigKeyState</identifier>
+      <signal name="KeyState" msg="Ignition_Info" database="VehicleSystem" bus="CAN" channel="CAN1" dir="auto" value="raw" />
+    </item>
+    <item offset="5" size="1" type="uint8">
+      <identifier>VarHazards</identifier>
+      <sysvar name="Hazards_Enable" namespace="Vehicle_Control" value="raw" />
+    </item>
+    <item offset="6" size="1" type="uint8">
+      <identifier>VarGear</identifier>
+      <sysvar name="Gear" namespace="Vehicle_Control" value="raw" />
+    </item>
+    <item offset="7" size="1" type="uint8">
+      <identifier>VarUnLockCar</identifier>
+      <sysvar name="Unlock_Car" namespace="Vehicle_Key" value="raw" />
+    </item>
+  </datagroup>
+  <datagroup groupID="3" size="24">
+    <identifier>FDXFrameAccess</identifier>
+    <item offset="0" size="12" type="bytearray">
+      <identifier>FrameEngineData</identifier>
+      <frame name="EngineData" database="VehicleSystem" bus="CAN" channel="CAN1" node="Gateway" />
+    </item>
+    <item offset="12" size="12" type="bytearray">
+      <identifier>FrameVehicleData</identifier>
+      <frame name="VehicleData" database="VehicleSystem" bus="CAN" channel="CAN1" node="Gateway" />
+    </item>
+  </datagroup>
+</canoefdxdescription>

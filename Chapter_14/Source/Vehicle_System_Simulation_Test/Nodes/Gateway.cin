@@ -1,0 +1,8 @@
+/*@!Encoding:1252*/
+
+
+variables
+{
+  int vertPosition1=10,horiposition1=5,backposition1=17,headposition1=28;
+  int vertPosition2=13,horiposition2=2,backposition2=21,headposition2=26;
+}

@@ -1,0 +1,31 @@
+/*@!Encoding:1252*/
+    //Display Node CAPL Program
+    includes
+    {
+      
+    }
+
+    variables
+    {
+      
+    }
+
+    //process the EngineState Message received
+    on message EngineState 
+    {  
+      // engine state received
+      if (this.dir == RX)
+      {
+        @sysvar::Engine::EngineSpeedDspMeter = this.EngineSpeed / 1000.0;
+      }
+    }
+    
+    //process the DoorState Message received
+     on message DoorState 
+    {  
+      // door state received
+      if (this.dir == RX)
+      {
+          @EnvDoorState = this.Door_L + this.Door_R * 2;
+      }
+    }

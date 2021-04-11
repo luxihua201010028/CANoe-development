@@ -1,0 +1,67 @@
+/*@!Encoding:1252*/
+    //Door Node CAPL Program
+    includes
+    {
+      
+    }
+
+    variables
+    {
+      int gDebugCounterTX = 0;
+      int gDebugCounterTXRQ = 0;
+      int gDebugCounterRX = 0;
+      
+    }
+
+    on start
+    {
+       setWriteDbgLevel(0); // set DbgLevel = 1 to get more information in Write-Window
+    }
+    
+    //check DoorState transmission direction
+    on message DoorState 
+    {
+      //Check DoorState Message transmission direction - TX
+      if (this.dir == TX)
+      {
+        gDebugCounterTX++;
+        if(gDebugCounterTX == 10)
+        {
+          writeDbgLevel(1,"DoorState TX received by node %NODE_NAME%");
+          gDebugCounterTX = 0;
+        }     
+      }
+      //Check DoorState Message transmission direction - TXREQUEST
+      if(this.dir == TXREQUEST)
+      {
+        gDebugCounterTXRQ++;
+        if(gDebugCounterTXRQ == 10)
+        {
+          writeDbgLevel(1,"DoorState TXREQUEST received by node %NODE_NAME%");
+          gDebugCounterTXRQ = 0;
+        } 
+      }
+      //Check DoorState Message transmission direction - RX
+      if (this.dir == RX)
+      {
+        gDebugCounterRX++;
+        if(gDebugCounterRX == 10)
+        {
+          writeDbgLevel(1,"Error: DoorState RX received by node %NODE_NAME%");
+          gDebugCounterRX = 0;
+        }
+      }
+    }    
+    
+    //to disable the debug info output
+    on key '0'
+    {
+      setwriteDbgLevel(0);
+    }
+    
+    //to enable the debug info output
+    on key '1'
+    {
+      setwriteDbgLevel(1);
+    }
+    

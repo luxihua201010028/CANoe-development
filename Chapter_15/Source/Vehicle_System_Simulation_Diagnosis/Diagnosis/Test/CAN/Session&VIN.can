@@ -1,0 +1,400 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  dword gTestStep;
+  const dword RESPONSE_TIMEOUT = 15000;       
+  const dword SENDING_TIMEOUT = 20000;        
+  char TEST_STEP[4] = "000";
+  byte VIN[17] = {0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47, 0x48, 0x49, 0x4A, 0x41, 0x42, 0x43, 0x44, 0x45, 0x46, 0x47};
+}
+
+void MainTest()
+{
+  testWaitForTimeout(2000);
+  TestModuleTitle ("DiagTest_Session&VIN");
+  TestModuleDescription ("Check the Session Control and Vehicle Identification Number Read/Write.");
+  TestGroupBegin("Session Control", "Check the Session Switch Function");
+  DiagTest_Session_Switch();
+  TestGroupEnd(); 
+  testWaitForTimeout(1000);
+  TestGroupBegin("Vehicle Identification Number Read/Write", "Check the VIN Read/Write Function");
+  DiagTest_VIN_WriteAndRead();
+  TestGroupEnd(); 
+}
+
+testcase DiagTest_Session_Switch()
+{
+  long status;
+  TestCaseTitle("Diagnosis_01", "DiagTest_Session_Control");
+  testCaseDescription("This test case used to verify Session switch function. Totally 3 steps.\n");
+  testCaseDescription("Step 01: Enter Default Session\n");
+  testCaseDescription("Step 02: Switch to Extended Session\n");
+  testCaseDescription("Step 03: Switch to Default Session Again");
+  Diag_ResetTestStep();
+  {
+    Diag_IncrementTestStep();
+    TestCaseComment("Switch to Default Session");
+    status = Diag_SwitchToDefaultSession();
+    if(status != 0)
+      testStepFail(TEST_STEP, "Default Session Switch Falied!!");
+    else
+      testStepPass(TEST_STEP, "Default Session Switch Successfully!!");
+  }
+  {
+    Diag_IncrementTestStep();
+    TestCaseComment("Switch to Extended Session");
+    status = Diag_SwitchToExtendedSession();
+    if(status != 0)
+      testStepFail(TEST_STEP, "Extended Session Switch Falied!!");
+    else
+      testStepPass(TEST_STEP, "Extended Session Switch Successfully!!");
+  }
+  {
+    Diag_IncrementTestStep();
+    TestCaseComment("Switch to Default Session");
+    status = Diag_SwitchToDefaultSession();
+    if(status != 0)
+      testStepFail(TEST_STEP, "Default Session Switch Falied!!");
+    else
+      testStepPass(TEST_STEP, "Default Session Switch Successfully!!");
+  }
+}
+
+testcase DiagTest_VIN_WriteAndRead()
+{
+  long status;
+  diagRequest IPC.Vehicle_Identification_Number_Read VIN_R;
+  diagRequest IPC.Vehicle_Identification_Number_Write VIN_W;
+  TestCaseTitle("Diagnosis_02", "DiagTest_VIN_WriteAndRead");
+  testCaseDescription("This test case used to verify VIN's Write and Read function. Totally 5steps.\n");
+  testCaseDescription("Step 01: Enter Default session, then Extended Session\n");
+  testCaseDescription("Step 02: Unlock LV1, then unlock LV2\n");
+  testCaseDescription("Step 03: Write VIN code\n");
+  testCaseDescription("Step 04: Back to unlock LV 1\n");
+  testCaseDescription("Step 05: Read and compare VIN code");
+  Diag_ResetTestStep();
+  //step 01. enter Default session, then Extended Session
+  {
+    Diag_IncrementTestStep();
+    TestCaseComment("Switch to Default Session");
+    status = Diag_SwitchToDefaultSession();
+    if(status != 0)
+      testStepFail(TEST_STEP, "Default Session Switch Falied!!");
+    else
+      testStepPass(TEST_STEP, "Default Session Switch Successfully!!");
+    TestCaseComment("Switch to Extended Session");
+    status = Diag_SwitchToExtendedSession();
+    if(status != 0)
+      testStepFail(TEST_STEP, "Extended Session Switch Falied!!");
+    else
+      testStepPass(TEST_STEP, "Extended Session Switch Successfully!!");
+  }
+  //step 02. unlock LV1, then unlock LV2
+  {
+    TestCaseComment("Unlock SecurityLevel_1");
+    if((status = Diag_SecurityLevel_1_Unlock())!= 0)
+    {
+      testStepFail(TEST_STEP, "Security Level 1 Unlock Falied!!");
+    }
+    else
+      testStepPass(TEST_STEP, "Security Level 1 Unlock Successfully!!");
+    TestCaseComment("Unlock SecurityLevel_2");
+    if((status = Diag_SecurityLevel_2_Unlock())!= 0)
+      testStepFail(TEST_STEP, "Security Level 2 Unlock Falied!!");
+    else
+      testStepPass(TEST_STEP, "Security Level 2 Unlock Successfully!!");
+  }
+  //step 03. write VIN code
+  {
+    diagRequest IPC.Vehicle_Identification_Number_Write VIN_Write;
+    Diag_IncrementTestStep();
+    TestCaseComment("Write VIN Code");
+    DiagSetParameterRaw(VIN_Write, "VIN", VIN, elCount(VIN));
+    diagSendRequest(VIN_Write);
+    if (TestWaitForDiagRequestSent(VIN_Write, SENDING_TIMEOUT)== 1)
+    {
+      testStepPass(TEST_STEP, "Request send Successfully!!");
+    }
+    else
+      testStepFail(TEST_STEP, "Request send failed!!");
+    if(TestWaitForDiagResponse(VIN_Write, RESPONSE_TIMEOUT) == 1)
+    {
+      status = diagGetLastResponseCode(VIN_Write);
+      if(-1 == status)
+        testStepPass(TEST_STEP, "VIN Write Successfully!!");
+      else
+        testStepFail(TEST_STEP, "VIN Write failed!!");
+    }
+  }
+  //step 04. back to unlock LV 1
+  {
+    TestCaseComment("Unlock SecurityLevel_1");
+    if((status = Diag_SecurityLevel_1_Unlock())!= 0)
+    {
+      testStepFail(TEST_STEP, "Security Level 1 Unlock Falied!!");
+    }
+    else
+      testStepPass(TEST_STEP, "Security Level 1 Unlock Successfully!!");
+  }
+  //step 05. read and compare VIN code
+  {
+    diagRequest IPC.Vehicle_Identification_Number_Read VIN_READ;
+    byte VIN_Read[17];
+    int i;
+    Diag_IncrementTestStep();
+    TestCaseComment("Read VIN Code");
+    diagSendRequest(VIN_READ);
+    if (TestWaitForDiagRequestSent(VIN_READ, SENDING_TIMEOUT)== 1)
+    {
+      testStepPass(TEST_STEP, "Request send Successfully!!");
+    }
+    else
+      testStepFail(TEST_STEP, "Request send failed!!");
+    if(TestWaitForDiagResponse(VIN_READ, RESPONSE_TIMEOUT) == 1)
+    {
+      status = diagGetLastResponseCode(VIN_READ);
+      if(-1 == status)
+        testStepPass(TEST_STEP, "VIN Read Successfully!!");
+      else
+        testStepFail(TEST_STEP, "VIN Read failed!!");
+    }
+    for(i = 0; i < 17; i++)
+    {
+      VIN_Read[i] = DiagGetRespPrimitiveByte(VIN_READ, i + 3);
+    }
+    TestCaseComment("Verify VIN Code");
+    for(i = 0; i < 17; i++)
+    {
+      if(VIN_Read[i] != VIN[i])
+      {
+        testStepFail(TEST_STEP, "VIN code read out not match the written one!! Test Failed!!");
+        break;
+      }
+    }
+    if(i == 17)
+      testStepPass(TEST_STEP, "VIN code read out match with the written one!! Test Pass!!");
+  }
+}
+
+long Diag_SwitchToDefaultSession()
+{
+  diagRequest IPC.DefaultSession_Start req;
+  long status;
+  long retval;
+  retval = 1;
+  diagSendRequest(req);
+  if (TestWaitForDiagRequestSent(req, SENDING_TIMEOUT)== 1)
+  {
+    testStepPass(TEST_STEP, "Request send Successfully!!");
+  }
+  else
+    testStepFail(TEST_STEP, "Request send failed!!");
+  if(TestWaitForDiagResponse(req, RESPONSE_TIMEOUT) == 1)
+  {
+    status = DiagGetLastResponseCode(req);
+    if (-1 == status)
+      retval = 0; 
+  }  
+  return retval; 
+}
+
+long Diag_SwitchToExtendedSession()
+{
+  diagRequest IPC.ExtendedDiagnosticSession_Start req;
+  long status;
+  long retval;
+  retval = 1;
+  diagSendRequest(req);
+  if (TestWaitForDiagRequestSent(req, SENDING_TIMEOUT)== 1)
+  {
+    testStepPass(TEST_STEP, "Request send Successfully!!");
+  }
+  else
+    testStepFail(TEST_STEP, "Request send failed!!");
+  if(TestWaitForDiagResponse(req, RESPONSE_TIMEOUT) == 1)
+  {
+    status = DiagGetLastResponseCode(req);
+    if (status > 0)
+    {
+      retval = status;
+      testStepFail(TEST_STEP, "Negative Response, NRC = 0x%.2x", status);
+    }
+    else if (-1 == status)
+      retval = 0;
+    else 
+      testStepFail(TEST_STEP, "No response!! Test failed!!");
+  }  
+  return retval; 
+}
+
+long Diag_SecurityLevel_1_Unlock()
+{
+  diagRequest IPC.SeedLevel1_Request Seedreq;
+  diagRequest IPC.KeyLevel1_Send Keysend;
+  byte seedArray[4];
+  byte keyArray[4];
+  dword actualLevel;
+  char variant[6];
+  char ipOption[2];
+  dword keyActualSize;
+  long status;
+  long retval;
+  int i;
+  diagSetTarget("IPC");
+  retval = 1;
+  actualLevel = 1;
+  ipOption[0] = 'a';
+  ipOption[1] = 0;
+  keyActualSize = 0;
+  Diag_IncrementTestStep();
+  // get seed;
+  TestCaseComment("Request Security Level 1 Seed");
+  diagSendRequest(Seedreq);
+  if (TestWaitForDiagRequestSent(Seedreq, SENDING_TIMEOUT)== 1)
+  {
+    testStepPass(TEST_STEP, "Request send Successfully!!");
+  }
+  else
+    testStepFail(TEST_STEP, "Request send failed!!");
+  if(TestWaitForDiagResponse(Seedreq, RESPONSE_TIMEOUT) == 1)
+  {
+    status = diagGetLastResponseCode(Seedreq);
+    if(status != -1)
+      testStepFail(TEST_STEP, "Seed Request failed!!");
+  }
+  for(i = 0; i < elcount(seedArray); i++)
+  {
+    seedArray[i] = DiagGetRespPrimitiveByte(Seedreq, i + 2);  
+    //The first 2bytes is SID + Type(0x67 01) 
+  }
+  // calculate key by dll;
+  TestCaseComment("Generate Security Level 1 Key");
+  status = DiagGenerateKeyFromSeed(seedArray, elcount(seedArray), actualLevel, variant, ipOption, 
+    keyArray, elcount(keyArray), keyActualSize);
+  if (status != 0)
+  {
+     testStepFail(TEST_STEP, "DiagGenerateKeyFromSeed failed with error code %d", status);
+     return -1;
+  }
+  else
+  {
+     testStepPass(TEST_STEP, "Successfully returned from DiagGenerateKeyFromSeed. Actual size of key is %d.", keyActualSize);
+  }
+  // send key;
+  DiagSetParameterRaw(Keysend, "SecurityKey", keyArray, elCount(keyArray));
+  TestCaseComment("Send Security Level 1 Key");
+  diagSendRequest(Keysend);
+  if (TestWaitForDiagRequestSent(Keysend, SENDING_TIMEOUT)== 1)
+  {
+    testStepPass(TEST_STEP, "Request send Successfully!!");
+  }
+  else
+    testStepFail(TEST_STEP, "Request send failed!!");
+  if(TestWaitForDiagResponse(Keysend, RESPONSE_TIMEOUT) == 1)
+  {
+    status = DiagGetLastResponseCode(Keysend);
+    if (-1 == status)
+      retval = 0; 
+  }
+  return retval;
+}
+
+long Diag_SecurityLevel_2_Unlock()
+{
+  diagRequest IPC.Seed_Level_2_Request Seedreq;
+  diagRequest IPC.Key_Level_2_Send Keysend;
+  byte seedArray[4];
+  byte keyArray[4];
+  dword actualLevel;
+  char variant[6];
+  char ipOption[2];
+  dword keyActualSize;
+  long status;
+  long retval;
+  int i;
+  diagSetTarget("IPC");
+  retval = 1;
+  actualLevel = 3;
+  ipOption[0] = 'a';
+  ipOption[1] = 0;
+  keyActualSize = 0;
+  Diag_IncrementTestStep();
+  // get seed;
+  TestCaseComment("Request Security Level 2 Seed");
+  diagSendRequest(Seedreq);
+  if (TestWaitForDiagRequestSent(Seedreq, SENDING_TIMEOUT)== 1)
+  {
+    testStepPass(TEST_STEP, "Request send Successfully!!");
+  }
+  else
+    testStepFail(TEST_STEP, "Request send failed!!");
+  if(TestWaitForDiagResponse(Seedreq, RESPONSE_TIMEOUT) == 1)
+  {
+    status = diagGetLastResponseCode(Seedreq);
+    if(status != -1)
+      testStepFail(TEST_STEP, "Seed Request failed!!");
+  }
+  for(i = 0; i < 4; i++)
+  {
+    seedArray[i] = DiagGetRespPrimitiveByte(Seedreq, i + 2);
+  }
+  // calculate key by dll;
+  TestCaseComment("Generate Security Level 2 Key");
+  status = DiagGenerateKeyFromSeed(seedArray, elcount(seedArray), actualLevel, variant, ipOption, 
+  keyArray, elcount(keyArray), keyActualSize);
+  if (status != 0)
+  {
+     testStepFail(TEST_STEP, "DiagGenerateKeyFromSeed failed with error code %d", status);
+     return -1;
+  }
+  else
+  {
+     testStepPass(TEST_STEP, "Successfully returned from DiagGenerateKeyFromSeed. Actual size of key is %d.", keyActualSize);
+  }
+  // send key;
+  DiagSetParameterRaw(Keysend, "SecurityKey", keyArray, elCount(keyArray));
+  TestCaseComment("Send Security Level 2 Key");
+  diagSendRequest(Keysend);
+  if (TestWaitForDiagRequestSent(Keysend, SENDING_TIMEOUT)== 1)
+  {
+    testStepPass(TEST_STEP, "Request send Successfully!!");
+  }
+  else
+    testStepFail(TEST_STEP, "Request send failed!!");
+  if(TestWaitForDiagResponse(Keysend, RESPONSE_TIMEOUT) == 1)
+  {
+    status = DiagGetLastResponseCode(Keysend);
+    if (-1 == status)
+      retval = 0; 
+  }
+  return retval;
+}
+
+void Diag_ResetTestStep()
+{
+  gTestStep = 0;
+}
+
+void Diag_IncrementTestStep()
+{
+  // Validate which potency the step number has and print out.
+  if (gTestStep < 10)
+  {
+    snprintf(TEST_STEP, elcount(TEST_STEP), "00%d", gTestStep); // e.g. "001"
+  }
+  else if (gTestStep < 99) // covers max. 99 test steps
+  {
+    snprintf(TEST_STEP, elcount(TEST_STEP), "0%d", gTestStep); // e.g. "011"
+  }
+  else  // covers max. 999 test steps
+  {
+    snprintf(TEST_STEP, elcount(TEST_STEP), "%d", gTestStep); // e.g. "111"
+  }
+  // Increment the step number.
+  gTestStep++;
+}

@@ -1,0 +1,18 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+
+// Called via COM interface.
+int Multiply(long a, long b)
+{  
+  write("%d * %d = %d", a, b, a * b); //print info in Write Window
+  
+  return(a * b);
+}

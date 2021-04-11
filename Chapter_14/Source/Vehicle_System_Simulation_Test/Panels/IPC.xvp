@@ -1,0 +1,152 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="IPC">
+    <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1" Children="Controls" ControlName="Static Text 1">
+      <Property Name="Name">StaticTextControl1</Property>
+      <Property Name="Size">36, 16</Property>
+      <Property Name="Location">362, 143</Property>
+      <Property Name="BackColor">Black</Property>
+      <Property Name="Font">Microsoft Sans Serif, 9.75pt</Property>
+      <Property Name="Text">km/h</Property>
+      <Property Name="ForeColor">Red</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl2" Children="Controls" ControlName="VehicleSpeedInfo">
+      <Property Name="Name">TextBoxControl2</Property>
+      <Property Name="Size">35, 15</Property>
+      <Property Name="Location">321, 142</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="BoxForeColor">Red</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="TextBackColor">Black</Property>
+      <Property Name="ValueDisplay">Double</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Microsoft Sans Serif, 9.75pt, style=Bold</Property>
+      <Property Name="AlarmUpperFont">Microsoft Sans Serif, 9.75pt, style=Bold</Property>
+      <Property Name="AlarmLowerFont">Microsoft Sans Serif, 9.75pt, style=Bold</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="DescriptionText">Gear</Property>
+      <Property Name="BoxBorderStyle">None</Property>
+      <Property Name="BoxBackColor">MenuText</Property>
+      <Property Name="TextForeColor">Red</Property>
+      <Property Name="DescriptionSize">0, 0</Property>
+      <Property Name="SymbolConfiguration">5;2;VehicleSystem;Gateway;VehicleData;VehicleSpeed;1;CAN;;-1;;;</Property>
+      <Property Name="TabIndex">4</Property>
+      <Property Name="ReadOnlyControl">True</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1" Children="Controls" ControlName="GearInfo">
+      <Property Name="Name">TextBoxControl1</Property>
+      <Property Name="Size">12, 15</Property>
+      <Property Name="Location">334, 123</Property>
+      <Property Name="AlarmUpperTextColor">WindowText</Property>
+      <Property Name="BoxForeColor">Red</Property>
+      <Property Name="ValueDecimalPlaces">0</Property>
+      <Property Name="AlarmLowerBkgColor">Salmon</Property>
+      <Property Name="TextBackColor">Black</Property>
+      <Property Name="ValueDisplay">Symbolic</Property>
+      <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+      <Property Name="AlarmLowerTextColor">WindowText</Property>
+      <Property Name="BoxFont">Microsoft Sans Serif, 9.75pt, style=Bold</Property>
+      <Property Name="AlarmUpperFont">Microsoft Sans Serif, 9.75pt, style=Bold</Property>
+      <Property Name="AlarmLowerFont">Microsoft Sans Serif, 9.75pt, style=Bold</Property>
+      <Property Name="AlarmGeneralSettings">1;0;0;100</Property>
+      <Property Name="DisplayLabel">Hide</Property>
+      <Property Name="DescriptionText">Gear</Property>
+      <Property Name="BoxBorderStyle">None</Property>
+      <Property Name="BoxBackColor">MenuText</Property>
+      <Property Name="TextForeColor">Red</Property>
+      <Property Name="DescriptionSize">0, 0</Property>
+      <Property Name="SymbolConfiguration">5;16;Cluster;;;Gear_Status;1;;;-1;;;</Property>
+      <Property Name="TabIndex">4</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl2" ControlName="RightInd">
+      <Property Name="Name">SwitchControl2</Property>
+      <Property Name="Size">31, 22</Property>
+      <Property Name="Location">410, 118</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="SwitchValuesRx">1;2;0;1</Property>
+      <Property Name="ImageFile">Bitmaps\LEDTurnRight.bmp</Property>
+      <Property Name="SymbolConfiguration">5;16;Cluster;;;Right_Turn_Indicator;1;;;-1;;;</Property>
+      <Property Name="TabIndex">3</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl1" ControlName="LeftInd">
+      <Property Name="Name">SwitchControl1</Property>
+      <Property Name="Size">31, 22</Property>
+      <Property Name="Location">246, 118</Property>
+      <Property Name="StateCnt">2</Property>
+      <Property Name="SwitchValues">1;2;0;1</Property>
+      <Property Name="SwitchValuesRx">1;2;0;1</Property>
+      <Property Name="ImageFile">Bitmaps\LEDTurnLeft.bmp</Property>
+      <Property Name="SymbolConfiguration">5;16;Cluster;;;Left_Turn_Indicator;1;;;-1;;;</Property>
+      <Property Name="TabIndex">3</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.ClockControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="ClockControl1" ControlName="Clock">
+      <Property Name="Name">ClockControl1</Property>
+      <Property Name="Size">81, 34</Property>
+      <Property Name="Location">296, 93</Property>
+      <Property Name="DisplaySeconds">False</Property>
+      <Property Name="SegmentStrength">1</Property>
+      <Property Name="SymbolConfiguration">
+      </Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.MeterControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="MeterControl4" ControlName="PetrolLevel">
+      <Property Name="Name">MeterControl4</Property>
+      <Property Name="Size">75, 69</Property>
+      <Property Name="Location">514, 238</Property>
+      <Property Name="ScaleMax">255</Property>
+      <Property Name="SweepAngleFrom">130</Property>
+      <Property Name="SweepAngleTo">55</Property>
+      <Property Name="NeedleColor">Red</Property>
+      <Property Name="NeedleShape">TriangleWithPoint</Property>
+      <Property Name="SymbolConfiguration">5;2;VehicleSystem;Gateway;EngineData;PetrolLevel;1;CAN;;-1;;;</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.MeterControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="MeterControl2" ControlName="EngineTemp">
+      <Property Name="Name">MeterControl2</Property>
+      <Property Name="Size">75, 69</Property>
+      <Property Name="Location">83, 226</Property>
+      <Property Name="ScaleMax">150</Property>
+      <Property Name="SweepAngleTo">-50</Property>
+      <Property Name="NeedleColor">Red</Property>
+      <Property Name="NeedleShape">TriangleWithPoint</Property>
+      <Property Name="SymbolConfiguration">5;2;VehicleSystem;Gateway;EngineData;EngTemp;1;CAN;;-1;;;</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.MeterControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="MeterControl3" ControlName="VehicleSpeed">
+      <Property Name="Name">MeterControl3</Property>
+      <Property Name="Size">142, 127</Property>
+      <Property Name="Location">350, 183</Property>
+      <Property Name="ScaleMin">7</Property>
+      <Property Name="ScaleMax">220</Property>
+      <Property Name="SweepAngleFrom">-115</Property>
+      <Property Name="SweepAngleTo">126</Property>
+      <Property Name="NeedleColor">Red</Property>
+      <Property Name="NeedleShape">TriangleWithPoint</Property>
+      <Property Name="SymbolConfiguration">5;2;VehicleSystem;Gateway;VehicleData;VehicleSpeed;1;CAN;;-1;;;</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.MeterControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="MeterControl1" ControlName="EngineSpeed">
+      <Property Name="Name">MeterControl1</Property>
+      <Property Name="Size">142, 127</Property>
+      <Property Name="Location">171, 185</Property>
+      <Property Name="ScaleMin">99</Property>
+      <Property Name="ScaleMax">8000</Property>
+      <Property Name="SweepAngleFrom">-109</Property>
+      <Property Name="SweepAngleTo">69</Property>
+      <Property Name="NeedleColor">Red</Property>
+      <Property Name="NeedleShape">TriangleWithPoint</Property>
+      <Property Name="SymbolConfiguration">5;2;VehicleSystem;Gateway;EngineData;EngSpeed;1;CAN;;-1;;;</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.PictureBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="PictureBoxControl1" ControlName="IPC">
+      <Property Name="Name">PictureBoxControl1</Property>
+      <Property Name="Size">666, 319</Property>
+      <Property Name="Location">1, 1</Property>
+      <Property Name="ImageFile">Bitmaps\IPC_BackGround.bmp</Property>
+      <Property Name="IsProportional">False</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">672, 322</Property>
+    <Property Name="BackColor">224, 224, 224</Property>
+    <Property Name="BorderStyle">FixedSingle</Property>
+  </Object>
+</Panel>

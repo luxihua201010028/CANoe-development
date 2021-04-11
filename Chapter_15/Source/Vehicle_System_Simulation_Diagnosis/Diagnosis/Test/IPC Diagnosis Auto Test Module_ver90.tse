@@ -1,0 +1,846 @@
+;CANoe Version |4|9|2|53552 IPC Diagnosis Auto Test Module_ver90 
+Version: 11.0.81 Build 81
+32 PRO
+5
+APPDIR Vector.CANoe.SignalGenerators.DLL
+Vector.CANoe.SignalGenerators, Version=11.0.81.0, Culture=neutral, PublicKeyToken=null
+Vector.CANoe.SignalGenerators.ComponentWrapper
+1
+1.0.1
+VTSPersistentRoot 1 Begin_Of_Object
+1
+1
+TS_PERSISTENT_ROOT_ID_STRING_0x792341fe
+1
+2
+VTSFolder 2 Begin_Of_Object
+1
+VTSItem 3 Begin_Of_Object
+1
+3 4129776160 0
+1
+END_OF_ITEM_DATA
+End_Of_Object VTSItem 3
+4
+IPC Diagnosis Auto Test Module
+1
+4132474352
+<VFileName V7 QL> 1 "..\..\report.xml" 
+END_OF_FILE_NAME
+<VFileName V7 QL> 1 "" 
+END_OF_FILE_NAME
+7
+1
+END_OF_FOLDER_DATA
+End_Of_Object VTSFolder 2
+VTSProgrammedNode 2 Begin_Of_Object
+1
+VTSWrapper<class_VProgrammedNode> 3 Begin_Of_Object
+2
+VTSItem 4 Begin_Of_Object
+1
+3 4132474352 0
+1
+END_OF_ITEM_DATA
+End_Of_Object VTSItem 4
+2
+VCaplTestNode 4 Begin_Of_Object
+2
+VTestNode 5 Begin_Of_Object
+8
+VProgrammedNode 6 Begin_Of_Object
+6
+VConfigurationRoot 7 Begin_Of_Object
+1
+End_Of_Object VConfigurationRoot 7
+<VFileName V7 QL> 1 "CAN\Session&VIN.can" 
+1
+C:\Users\zkn1szh\Desktop\TUP_Sources20190408\TUP_Sources\Chapter_15\Source\11.0\Vehicle_System_Simulation_Diagnosis\Diagnosis\Test\CAN\Session&VIN.cbf
+
+
+5
+Diag_Session&VIN
+Test 4
+EOF_TITLE_INFO
+
+1
+1
+VConfigurationBox 7 Begin_Of_Object
+1
+VUniqueBox 8 Begin_Of_Object
+1
+VBoxRoot 9 Begin_Of_Object
+1
+3
+1 1 0 1 -1 -1 -1 -1 684 0 1366 295
+
+1
+
+MDI_DOCK_INFO_END
+5
+1
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 -1 -1 -1 -1 0 0 681 435
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+1
+1600 761
+END_OF_DESKTOP_DATA
+6
+0 1 -1 -1 -1 -1 684 0 1366 295
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+1
+1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+1
+1600 668
+END_OF_DESKTOP_DATA
+END_OF_DESKTOP_DATA_COLLECTION
+0
+0 1
+1
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+END_OF_DESKTOP_DATA_COLLECTION
+0
+END_OF_DESKTOP_MEMBER
+{FC5906F3-DDB9-489E-B822-26109EAC366F}
+0
+End_Of_Object VBoxRoot 9
+1 -1 0 0 0 0 0 0 0 0 0 0
+End_Of_Object VUniqueBox 8
+1
+End_Of_Object VConfigurationBox 7
+1
+1
+0
+1
+0
+
+EOF_MBSSDATA
+1
+0 1
+0
+EOF_NLDATA
+0
+EOF_ASSEMBLYDATA
+<VFileName V7 QL> 1 "CAN\Session&VIN.cbf" 
+VIPBStackSetting 7 Begin_Of_Object
+6
+2
+0
+0
+1
+0
+1
+7
+0.0.0.0
+End_Of_Serialized_Data 7
+7
+::
+End_Of_Serialized_Data 7
+5
+End_Of_Object VIPBStackSetting 7
+6
+NDebugger::VDebuggerHost 7 Begin_Of_Object
+2
+0
+1
+NDebugger::VFile 8 Begin_Of_Object
+2
+<VFileName V7 QL> 1 "CAN\Session&VIN.can" 
+0
+0
+End_Of_Object NDebugger::VFile 8
+VNETStandaloneComponent 8 Begin_Of_Object
+1
+VNETControlBox 9 Begin_Of_Object
+2
+VUniqueBox 10 Begin_Of_Object
+1
+VBoxRoot 11 Begin_Of_Object
+1
+3
+1 -1 0 1 -1 -1 -1 -1 438 23 1273 614
+Debugger - Diag_Session&VIN
+1
+
+MDI_DOCK_INFO_END
+5
+1
+6
+0 1 0 0 -1 -1 320 133 1280 535
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+0
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 320 133 1280 535
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+0
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 320 133 1280 535
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+0
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 320 133 1280 535
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+0
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 -1 -1 -1 -1 438 23 1273 614
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+0
+0
+1
+1600 668
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 320 133 1280 535
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+0
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+END_OF_DESKTOP_DATA_COLLECTION
+0
+0 1
+1
+6
+0 1 0 0 -1 -1 320 133 1280 535
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+0
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 320 133 1280 535
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+0
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 320 133 1280 535
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+0
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 320 133 1280 535
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+0
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 320 133 1280 535
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+0
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 320 133 1280 535
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+0
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+END_OF_DESKTOP_DATA_COLLECTION
+0
+END_OF_DESKTOP_MEMBER
+{2FA90D98-577C-4223-9554-1FBDBE5CA8DF}
+0
+End_Of_Object VBoxRoot 11
+1 -1 0 0 0 0 0 0 0 0 0 0
+End_Of_Object VUniqueBox 10
+1
+1 -1 0 0 0 0 0 0 0 0 0 0
+0
+End_Of_Object VNETControlBox 9
+140
+APPDIR Vector.CANoe.Debugger.DLL
+Vector.CANoe.Debugger, Version=11.0.81.0, Culture=neutral, PublicKeyToken=null
+Vector.CANoe.Debugger.DebuggerComponent
+1
+1
+APPDIR CANw_Net.DLL
+CANw_Net, Version=11.0.81.0, Culture=neutral, PublicKeyToken=null
+Vector.CANalyzer.ApplicationSerializer
+2
+mApplication
+2
+APPDIR Vector.CANoe.Debugger.DLL
+Vector.CANoe.Debugger, Version=11.0.81.0, Culture=neutral, PublicKeyToken=null
+Vector.CANoe.Debugger.DebuggerModel
+3
+mModel
+3
+APPDIR Components\Vector.CANalyzer.Serialization\1.5.0.0\Vector.CANalyzer.Serialization.dll
+Vector.CANalyzer.Serialization, Version=1.5.0.0, Culture=neutral, PublicKeyToken=b273882a063429a6
+Vector.CANalyzer.Serialization.SerializationVersion
+4
+SerializationVersion
+4
+UInt16
+mMajor
+1
+UInt16
+mMinor
+0
+UInt16
+mPatch
+0
+--TextFormatter: End of Object--
+--TextFormatter: End of Object--
+TypeRef:2
+2
+--TextFormatter: End of Object--
+TypeRef:3
+3
+Int32
+NrOfFiles
+1
+Int32
+FileID0
+0
+Int32
+CurrentLine0
+108
+Int32
+SelectedFileID
+0
+Int32
+NrOfWatchedVariables
+0
+String
+WindowLayout
+48
+<?xml version="1.0" encoding="utf-16"?>
+<!--
+
+  Actipro Docking/MDI for WinForms
+  Copyright (c) 2001-2014 Actipro Software LLC.  All rights reserved.
+  http://www.actiprosoftware.com
+
+-->
+<ToolWindowLayout Version="1.0">
+  <LayoutData>
+    <HostContainerControl>
+      <ToolWindowContainer Dock="Bottom" Size="819, 204" SelectedToolWindowGuid="5e226e32-2b9f-48df-8578-0c1c7b1db1b8">
+        <ToolWindow Key="Breakpoints" Guid="fede650a-80e7-4529-bfce-4ed698aba1b1" CanBecomeDocument="False" CanFloat="False" ImageIndex="-1" Text="Breakpoints">
+          <AutoHideStateInfo RootDock="Bottom" />
+          <DockedInsideHostStateInfo RootDock="Bottom" IsAttached="True">
+            <AttachedToBefore Guid="956e5046-02dc-4bc8-8503-8047f8ebc11e" />
+            <AttachedToBefore Guid="5e226e32-2b9f-48df-8578-0c1c7b1db1b8" />
+          </DockedInsideHostStateInfo>
+          <DockedOutsideHostStateInfo IsAttached="False" />
+        </ToolWindow>
+        <ToolWindow Key="Watch" Guid="956e5046-02dc-4bc8-8503-8047f8ebc11e" CanBecomeDocument="False" CanFloat="False" ImageIndex="-1" Text="Watch">
+          <AutoHideStateInfo RootDock="Bottom" />
+          <DockedInsideHostStateInfo RootDock="Bottom" IsAttached="True">
+            <AttachedToBefore Guid="5e226e32-2b9f-48df-8578-0c1c7b1db1b8" />
+            <AttachedToAfter Guid="fede650a-80e7-4529-bfce-4ed698aba1b1" />
+          </DockedInsideHostStateInfo>
+          <DockedOutsideHostStateInfo IsAttached="False" />
+        </ToolWindow>
+        <ToolWindow Key="Variables" Guid="5e226e32-2b9f-48df-8578-0c1c7b1db1b8" CanBecomeDocument="False" CanFloat="False" ImageIndex="-1" Text="Variables">
+          <AutoHideStateInfo RootDock="Bottom" />
+          <DockedInsideHostStateInfo RootDock="Bottom" IsAttached="True">
+            <AttachedToAfter Guid="fede650a-80e7-4529-bfce-4ed698aba1b1" />
+            <AttachedToAfter Guid="956e5046-02dc-4bc8-8503-8047f8ebc11e" />
+          </DockedInsideHostStateInfo>
+          <DockedOutsideHostStateInfo IsAttached="False" />
+        </ToolWindow>
+      </ToolWindowContainer>
+    </HostContainerControl>
+    <AutoHide Dock="Left" />
+    <AutoHide Dock="Right" />
+    <AutoHide Dock="Top" />
+    <AutoHide Dock="Bottom" />
+    <TabbedDocuments Orientation="Horizontal" />
+    <FloatingContainers />
+    <Hidden />
+  </LayoutData>
+  <CustomData />
+</ToolWindowLayout>
+Boolean
+ShowOnlyLocalsVar
+False
+Boolean
+ShowOnlyLocalsWatch
+False
+Int32
+FindWindowRectX
+-1
+Int32
+FindWindowRectY
+-1
+Int32
+FindWindowRectW
+-1
+Int32
+FindWindowRectH
+-1
+Int32
+FindWindowLookInType
+0
+TypeRef:4
+SerializationVersion
+5
+UInt16
+mMajor
+1
+UInt16
+mMinor
+0
+UInt16
+mPatch
+4
+--TextFormatter: End of Object--
+--TextFormatter: End of Object--
+End_Of_Object VNETStandaloneComponent 8
+0
+End_Of_Object NDebugger::VDebuggerHost 7
+
+End_Of_Serialized_Data 6
+0
+<VFileName V7 QL> 0 "" 
+1
+0
+End_Of_Object VProgrammedNode 6
+0
+2
+IDS_REPORTFILTER_ITEM_DESCRIPTION=1
+IDS_REPORTFILTER_ITEM_COMMENTS=1
+IDS_REPORTFILTER_ITEM_VARIABLE=1
+IDS_REPORTFILTER_ITEM_RESUME_SIMPLETIMEOUT=1
+IDS_REPORTFILTER_ITEM_RESUME=1
+IDS_REPORTFILTER_ITEM_FIRSTVIOLATION=1
+IDS_REPORTFILTER_ITEM_STATISTICS=1
+IDS_REPORTFILTER_ITEM_HARDWARE=1
+IDS_REPORTFILTER_ITEM_CHECKEVENTS=0
+IDS_REPORTFITLER_ITEM_GENINFO=1
+IDS_REPORTFITLER_ITEM_SUTINFO=1
+IDS_REPORTFITLER_ITEM_ENGINFO=1
+IDS_REPORTFITLER_ITEM_ELMINFO=1
+End_Of_ReportFilter_Items
+0 
+NULL
+NULL
+0
+<VFileName V7 QL> 1 "CAN\Session&VIN_report.xml" 
+1 0 1
+1
+<VFileName V7 BQL> 1 base=cfg "..\..\" 
+3
+VSimulinkModelViewerConfiguration 6 Begin_Of_Object
+2
+<VFileName V7 QL> 0 "" 
+<VFileName V7 QL> 0 "" 
+<VFileName V7 QL> 0 "" 
+150
+0
+End_Of_Object VSimulinkModelViewerConfiguration 6
+1
+0
+1
+1
+VConfigurationBox 6 Begin_Of_Object
+1
+VUniqueBox 7 Begin_Of_Object
+1
+VBoxRoot 8 Begin_Of_Object
+1
+3
+1 1 0 1 -1 -1 -1 -1 684 0 1366 295
+
+1
+
+MDI_DOCK_INFO_END
+5
+1
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 -1 -1 -1 -1 0 0 681 435
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+1
+1600 761
+END_OF_DESKTOP_DATA
+6
+0 1 -1 -1 -1 -1 684 0 1366 295
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+1
+1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+1
+1600 668
+END_OF_DESKTOP_DATA
+END_OF_DESKTOP_DATA_COLLECTION
+0
+0 1
+1
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+6
+0 1 0 0 -1 -1 240 280 590 530
+6 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 -1 -1 32767 0 0 0 0 0 0 0 0 0 0 -1 -1 0 0 0 0 0 0 
+END_OF_DOCK_INFO
+0
+-1
+1
+0 1 -1 -1 -1 -1 400 215 1200 645
+0
+0
+0 0
+END_OF_DESKTOP_DATA
+END_OF_DESKTOP_DATA_COLLECTION
+0
+END_OF_DESKTOP_MEMBER
+{FC5906F3-DDB9-489E-B822-26109EAC366F}
+0
+End_Of_Object VBoxRoot 8
+1 -1 0 0 0 0 0 0 0 0 0 0
+End_Of_Object VUniqueBox 7
+1
+End_Of_Object VConfigurationBox 6
+NULL
+0
+0
+End_Of_Object VTestNode 5
+VTestModuleControllerCapl 5 Begin_Of_Object
+1
+VTestModuleController 6 Begin_Of_Object
+3
+1
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+0
+End_Of_Object VTestModuleController 6
+End_Of_Object VTestModuleControllerCapl 5
+End_Of_Object VCaplTestNode 4
+TS_WRP_DATA_END
+End_Of_Object VTSWrapper<class_VProgrammedNode> 3
+4
+0
+1
+TS_BUS_INFO_COLLECTION_END
+TS_CAPL_BLOCK_END
+End_Of_Object VTSProgrammedNode 2
+1
+4129776160
+2
+1
+4129776160
+1
+4132474352
+1
+4132474352
+0
+End_Of_Object VTSPersistentRoot 1

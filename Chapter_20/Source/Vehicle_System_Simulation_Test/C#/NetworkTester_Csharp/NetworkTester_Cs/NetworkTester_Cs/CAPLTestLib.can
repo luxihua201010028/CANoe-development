@@ -1,0 +1,53 @@
+/*@!Encoding:1252*/
+  //CAPLTestLib.can
+  includes
+  {
+    
+  }
+
+  variables
+  {
+   int gUndifnedMsgCheckResult;
+  }
+
+  testcase CheckUndefinedMessage()
+  {  
+    dword gCycCheckId;
+    
+    const long kTIMEOUT        = 4000;
+    long lEventUndefineMessageId;             
+    char lbuffer[100];
+
+    gUndifnedMsgCheckResult = 0;
+
+    // Information for test report.
+    TestCaseTitle("TC-7", "TC-7: Check CAN channel for undefined messages");
+
+    gCycCheckId = ChkStart_UndefinedMessageReceived("UndefinedMsgCallback");
+
+    testWaitForTimeout(kTIMEOUT);
+
+    switch(gUndifnedMsgCheckResult)
+    {
+      case 1:  
+        // Event message ID
+        lEventUndefineMessageId = ChkQuery_EventMessageId(gCycCheckId);
+        snprintf(lbuffer,elcount(lbuffer),"Undefined message detacted: Id 0x%x", lEventUndefineMessageId);      
+        TestStepFail("", lbuffer);
+        break; 
+      default:
+        TestStepPass("","No undefined message detacted");       
+        break; 
+    }
+
+    ChkControl_Destroy(gCycCheckId);
+    testWaitForTimeout(500);
+  }
+
+  UndefinedMsgCallback(dword aCheckId)
+  {
+    ChkQuery_EventStatusToWrite(aCheckId);
+    gUndifnedMsgCheckResult = 1;
+  }
+
+

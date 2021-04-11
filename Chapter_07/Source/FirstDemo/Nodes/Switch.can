@@ -1,0 +1,25 @@
+/*@!Encoding:1252*/
+includes
+{
+  
+}
+
+variables
+{
+  
+}
+on preStart
+{
+  write("This is my first CANoe Simulation!");
+}
+
+// Reaction to change of system variable svSwitch
+on sysvar sysvar::MyNamespace::svSwitch {
+  // Declare a CAN message to be transmitted
+  message Msg1 msg;
+  // Read out the value of the light switch,
+  // Assign to the bus signal bsSwitch
+  msg.bsSwitch = SysGetVariableInt(sysvar::MyNamespace::svSwitch);
+  // Output message on bus (spontaneous transmission)
+  output(msg);
+}

@@ -1,0 +1,57 @@
+/*@!Encoding:1252*/
+includes
+{
+  //To add the head files
+}
+
+variables
+{
+  //To add the variables
+}
+
+on start
+{
+  canOffline(3); //disconnect the node from the newwork
+}
+
+
+on signal_update LockStatus
+{
+  if(this==1)
+  {
+    canOnline(3);     //connect the node to the newwork
+  }
+  else if(this==0)
+  {
+    canOffline(3);    //disconnect the node from the newwork
+  }
+}
+
+
+on signal_update Gear
+{
+  @Cluster::Gear_Status= this;   //To display current Gear status in panel
+}
+/*****************************************************************************
+*
+*                      Following Part for Lost Message Demo
+*
+*****************************************************************************/
+
+on sysvar sysvar::LostMessage::IPC_Cluster_Info
+{
+  switch (@this)
+  {
+    case 0:
+    {
+      ILFaultInjectionEnableMsg(Cluster_Info);
+      break;
+    }
+    case 1:
+    {
+      ILFaultInjectionDisableMsg(Cluster_Info);
+      break;
+    }
+  }
+}
+

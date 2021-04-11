@@ -1,0 +1,230 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Seat Control">
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1" Children="Controls" ControlName="Drivergroup">
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl4" Children="Controls" ControlName="Static Text 10">
+        <Property Name="Name">StaticTextControl4</Property>
+        <Property Name="Size">62, 13</Property>
+        <Property Name="Location">25, 258</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8.25pt, style=Bold</Property>
+        <Property Name="Text">BCM Side</Property>
+        <Property Name="ForeColor">Blue</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl2" Children="Controls" ControlName="Radio Button 2">
+        <Property Name="Name">RadioButtonControl2</Property>
+        <Property Name="Size">62, 17</Property>
+        <Property Name="Location">7, 93</Property>
+        <Property Name="BackColor">221, 221, 221</Property>
+        <Property Name="Text">Driver 2</Property>
+        <Property Name="SwitchValue">2</Property>
+        <Property Name="SymbolConfiguration">5;16;Vehicle_Key;;;Car_Driver;1;;;-1;;;</Property>
+        <Property Name="TabIndex">1</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.RadioButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="RadioButtonControl1" Children="Controls" ControlName="Radio Button 1">
+        <Property Name="Name">RadioButtonControl1</Property>
+        <Property Name="Size">62, 17</Property>
+        <Property Name="Location">7, 38</Property>
+        <Property Name="BackColor">221, 221, 221</Property>
+        <Property Name="Text">Driver 1</Property>
+        <Property Name="SymbolConfiguration">5;16;Vehicle_Key;;;Car_Driver;1;;;-1;;;</Property>
+        <Property Name="TabIndex">0</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl1</Property>
+      <Property Name="Size">91, 278</Property>
+      <Property Name="Location">139, 3</Property>
+      <Property Name="BackColor">221, 221, 221</Property>
+      <Property Name="Text">Driver</Property>
+      <Property Name="TabIndex">21</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl20" Children="Controls" ControlName="Controlgroup">
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1" Children="Controls" ControlName="Static Text 9">
+        <Property Name="Name">StaticTextControl1</Property>
+        <Property Name="Size">54, 13</Property>
+        <Property Name="Location">70, 257</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8.25pt, style=Bold</Property>
+        <Property Name="Text">HU Side</Property>
+        <Property Name="ForeColor">Blue</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2" Children="Controls" ControlName="Static Text 5">
+        <Property Name="Name">StaticTextControl2</Property>
+        <Property Name="Size">80, 13</Property>
+        <Property Name="Location">35, 140</Property>
+        <Property Name="BackColor">221, 221, 221</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Seatback back</Property>
+        <Property Name="ForeColor">Black</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl3" Children="Controls" ControlName="Static Text 6">
+        <Property Name="Name">StaticTextControl3</Property>
+        <Property Name="Size">91, 13</Property>
+        <Property Name="Location">35, 168</Property>
+        <Property Name="BackColor">221, 221, 221</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Seatback forward</Property>
+        <Property Name="ForeColor">Black</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl6" Children="Controls" ControlName="Static Text 7">
+        <Property Name="Name">StaticTextControl6</Property>
+        <Property Name="Size">48, 13</Property>
+        <Property Name="Location">35, 196</Property>
+        <Property Name="BackColor">221, 221, 221</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Head up</Property>
+        <Property Name="ForeColor">Black</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl12" Children="Controls" ControlName="Static Text 8">
+        <Property Name="Name">StaticTextControl12</Property>
+        <Property Name="Size">62, 13</Property>
+        <Property Name="Location">35, 224</Property>
+        <Property Name="BackColor">221, 221, 221</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Head down</Property>
+        <Property Name="ForeColor">Black</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl11" Children="Controls" ControlName="Static Text 3">
+        <Property Name="Name">StaticTextControl11</Property>
+        <Property Name="Size">44, 13</Property>
+        <Property Name="Location">35, 84</Property>
+        <Property Name="BackColor">221, 221, 221</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Seat up</Property>
+        <Property Name="ForeColor">Black</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl18" ControlName="Head up">
+        <Property Name="Name">SwitchControl18</Property>
+        <Property Name="Size">14, 14</Property>
+        <Property Name="Location">13, 195</Property>
+        <Property Name="StateCnt">2</Property>
+        <Property Name="SwitchValues">1;2;0;1</Property>
+        <Property Name="SwitchValuesRx">1;2;0;1</Property>
+        <Property Name="IsButton">True</Property>
+        <Property Name="ImageFile">Bitmaps\sButtonQuadraticUp_2.bmp</Property>
+        <Property Name="SymbolConfiguration">5;2;Seatdb;Gateway;Seat_Setting;Head_up;1;LIN;;-1;;;</Property>
+        <Property Name="TabIndex">18</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl5" ControlName="Seatback back">
+        <Property Name="Name">SwitchControl5</Property>
+        <Property Name="Size">14, 14</Property>
+        <Property Name="Location">13, 139</Property>
+        <Property Name="StateCnt">2</Property>
+        <Property Name="SwitchValues">1;2;0;1</Property>
+        <Property Name="SwitchValuesRx">1;2;0;1</Property>
+        <Property Name="IsButton">True</Property>
+        <Property Name="ImageFile">Bitmaps\sButtonQuadraticLeft_2.bmp</Property>
+        <Property Name="SymbolConfiguration">5;2;Seatdb;Gateway;Seat_Setting;Seatback_back;1;LIN;;-1;;;</Property>
+        <Property Name="TabIndex">5</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl19" ControlName="Head down">
+        <Property Name="Name">SwitchControl19</Property>
+        <Property Name="Size">14, 14</Property>
+        <Property Name="Location">13, 223</Property>
+        <Property Name="StateCnt">2</Property>
+        <Property Name="SwitchValues">1;2;0;1</Property>
+        <Property Name="SwitchValuesRx">1;2;0;1</Property>
+        <Property Name="IsButton">True</Property>
+        <Property Name="ImageFile">Bitmaps\sButtonQuadraticDown_2.bmp</Property>
+        <Property Name="SymbolConfiguration">5;2;Seatdb;Gateway;Seat_Setting;Head_down;1;LIN;;-1;;;</Property>
+        <Property Name="TabIndex">19</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl8" Children="Controls" ControlName="Static Text 2">
+        <Property Name="Name">StaticTextControl8</Property>
+        <Property Name="Size">67, 13</Property>
+        <Property Name="Location">35, 56</Property>
+        <Property Name="BackColor">221, 221, 221</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Seat forward</Property>
+        <Property Name="ForeColor">Black</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl17" ControlName="Seat up">
+        <Property Name="Name">SwitchControl17</Property>
+        <Property Name="Size">14, 14</Property>
+        <Property Name="Location">13, 83</Property>
+        <Property Name="StateCnt">2</Property>
+        <Property Name="SwitchValues">1;2;0;1</Property>
+        <Property Name="SwitchValuesRx">1;2;0;1</Property>
+        <Property Name="IsButton">True</Property>
+        <Property Name="ImageFile">Bitmaps\sButtonQuadraticUp_2.bmp</Property>
+        <Property Name="SymbolConfiguration">5;2;Seatdb;Gateway;Seat_Setting;Seat_up;1;LIN;;-1;;;</Property>
+        <Property Name="TabIndex">17</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl9" Children="Controls" ControlName="Static Text 1">
+        <Property Name="Name">StaticTextControl9</Property>
+        <Property Name="Size">56, 13</Property>
+        <Property Name="Location">35, 28</Property>
+        <Property Name="BackColor">221, 221, 221</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Seat back</Property>
+        <Property Name="ForeColor">Black</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl16" ControlName="Seat down">
+        <Property Name="Name">SwitchControl16</Property>
+        <Property Name="Size">14, 14</Property>
+        <Property Name="Location">13, 111</Property>
+        <Property Name="StateCnt">2</Property>
+        <Property Name="SwitchValues">1;2;0;1</Property>
+        <Property Name="SwitchValuesRx">1;2;0;1</Property>
+        <Property Name="IsButton">True</Property>
+        <Property Name="ImageFile">Bitmaps\sButtonQuadraticDown_2.bmp</Property>
+        <Property Name="SymbolConfiguration">5;2;Seatdb;Gateway;Seat_Setting;Seat_down;1;LIN;;-1;;;</Property>
+        <Property Name="TabIndex">16</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl10" Children="Controls" ControlName="Static Text 4">
+        <Property Name="Name">StaticTextControl10</Property>
+        <Property Name="Size">58, 13</Property>
+        <Property Name="Location">35, 112</Property>
+        <Property Name="BackColor">221, 221, 221</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Seat down</Property>
+        <Property Name="ForeColor">Black</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl15" ControlName="Seat back">
+        <Property Name="Name">SwitchControl15</Property>
+        <Property Name="Size">14, 14</Property>
+        <Property Name="Location">13, 27</Property>
+        <Property Name="StateCnt">2</Property>
+        <Property Name="SwitchValues">1;2;0;1</Property>
+        <Property Name="SwitchValuesRx">1;2;0;1</Property>
+        <Property Name="IsButton">True</Property>
+        <Property Name="ImageFile">Bitmaps\sButtonQuadraticLeft_2.bmp</Property>
+        <Property Name="SymbolConfiguration">5;2;Seatdb;Gateway;Seat_Setting;Seat_back;1;LIN;;-1;;;</Property>
+        <Property Name="TabIndex">15</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl14" ControlName="Seat forward">
+        <Property Name="Name">SwitchControl14</Property>
+        <Property Name="Size">14, 14</Property>
+        <Property Name="Location">13, 55</Property>
+        <Property Name="StateCnt">2</Property>
+        <Property Name="SwitchValues">1;2;0;1</Property>
+        <Property Name="SwitchValuesRx">1;2;0;1</Property>
+        <Property Name="IsButton">True</Property>
+        <Property Name="ImageFile">Bitmaps\sButtonQuadraticRight_2.bmp</Property>
+        <Property Name="SymbolConfiguration">5;2;Seatdb;Gateway;Seat_Setting;Seat_forward;1;LIN;;-1;;;</Property>
+        <Property Name="TabIndex">14</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=11.0.42.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl13" ControlName="Seatback forward">
+        <Property Name="Name">SwitchControl13</Property>
+        <Property Name="Size">14, 14</Property>
+        <Property Name="Location">13, 167</Property>
+        <Property Name="StateCnt">2</Property>
+        <Property Name="SwitchValues">1;2;0;1</Property>
+        <Property Name="SwitchValuesRx">1;2;0;1</Property>
+        <Property Name="IsButton">True</Property>
+        <Property Name="ImageFile">Bitmaps\sButtonQuadraticRight_2.bmp</Property>
+        <Property Name="SymbolConfiguration">5;2;Seatdb;Gateway;Seat_Setting;Seatback_forward;1;LIN;;-1;;;</Property>
+        <Property Name="TabIndex">13</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl20</Property>
+      <Property Name="Size">130, 278</Property>
+      <Property Name="Location">7, 3</Property>
+      <Property Name="BackColor">221, 221, 221</Property>
+      <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+      <Property Name="Text">Seat Control</Property>
+      <Property Name="ForeColor">Black</Property>
+      <Property Name="TabIndex">20</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">240, 290</Property>
+    <Property Name="BackColor">221, 221, 221</Property>
+    <Property Name="Panel">Panel</Property>
+  </Object>
+</Panel>

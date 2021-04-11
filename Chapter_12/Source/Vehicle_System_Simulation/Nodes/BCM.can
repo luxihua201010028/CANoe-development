@@ -1,0 +1,170 @@
+/*@!Encoding:1252*/
+includes
+{
+  //To add the head files
+}
+
+variables
+{
+  msTimer msTcrank;      //define the timer(ms) for crank delay
+  msTimer msTIL;         //define the timer(ms) for deactivate CANoe IL
+  int flashPeriod=500;   //Hazards flash cycle
+
+  int TurnLightStatus;   //define the turn light status: 0 - both off; 1 - Left flash; 2 - Right flash; 3 - Hazards on
+  msTimer msTleftflash,msTrightflash; //define the timers(ms) for Left/Right Light flash
+  message Driver_Info Msgdriver; //define the message for driver info
+}
+
+on preStart
+{
+  ILControlInit(); //Initialize CANoe IL 
+  ILControlStop(); //Deactivate CANoe IL 
+}
+
+//to process the key position
+on sysvar_update Vehicle_Key::Key_State
+{
+  $Ignition_Info::KeyState=@this;
+  if(@this==3)
+  {
+    @Vehicle_Control::Speed_Up=0;
+    setTimer(msTcrank,800);   //Simulate the crank behavior    
+  }
+}
+
+//return to Run status from Crank after 800ms
+on timer msTcrank
+{
+  $KeyState=2; //Simulate the crank behavior
+  @sysvar::Vehicle_Key::Key_State =2;
+}
+
+//to process the driver ID change
+on sysvar_update Vehicle_Key::Car_Driver
+{
+  //Set the value of driver ID based on system variable Car_Driver
+  if(@this==1)
+  {
+    Msgdriver.byte(0)=0;
+  }
+  else if(@this==2)
+  {
+    Msgdriver.byte(0)=0x1;
+  }
+  output(Msgdriver);
+}
+
+//to process the event of Unlock Car
+on sysvar_update Vehicle_Key::Unlock_Car
+{
+  if(@this==1)
+  {
+    ILControlStart();
+    $LockStatus=1;
+    @Vehicle_Key::Car_Driver=2;//driver 2 is set to default
+  }
+}
+
+//to process the event of Lock Car
+on sysvar_update Vehicle_Key::Lock_Car
+{
+  if(@this==1)
+  {
+    $LockStatus=0;
+    setTimer(msTIL,1500); //wait 1.5s to make sure other ECUs are offline
+  }
+}
+
+ON Timer msTIL
+{
+  ILControlStop();
+}
+void LightOFF(void)
+{
+  //Initilize the light status
+  $VehicleLight=0;
+  TurnLightStatus=0;
+  $LightStatus=0;  
+}
+
+////////////////////To realize the functions of turn left,turn right and Hazards///////////////
+on sysvar Vehicle_Control::Left_Turn_Enable
+{
+  if(@this==1)
+  {
+    @sysvar::Vehicle_Control::Right_Turn_Enable=0;
+    $VehicleLight=1;TurnLightStatus=1;
+    settimer(msTleftflash,flashPeriod);
+  }
+  else
+  {
+    if(@Vehicle_Control::Right_Turn_Enable==0 && @Vehicle_Control::Hazards_Enable==0)
+    {
+      LightOFF();
+    }
+    cancelTimer(msTleftflash);
+    @Cluster::Left_Turn_Indicator=0;
+  }
+}
+
+on timer msTleftflash
+{
+  $LightStatus=!$LightStatus;@Cluster::Left_Turn_Indicator=!@Cluster::Left_Turn_Indicator;
+  setTimer(msTleftflash,flashPeriod);
+}
+
+on sysvar Vehicle_Control::Right_Turn_Enable
+{
+  if(@this==1)
+  {
+    @sysvar::Vehicle_Control::Left_Turn_Enable=0;
+    $VehicleLight=2;TurnLightStatus=2;
+    settimer(msTrightflash,flashPeriod);
+  }
+  else
+  {
+    if(@Vehicle_Control::Left_Turn_Enable==0 && @Vehicle_Control::Hazards_Enable==0)
+    {
+      LightOFF();
+    }
+    cancelTimer(msTrightflash);
+    @Cluster::Right_Turn_Indicator=0;
+  }
+}
+
+on timer msTrightflash
+{
+  $LightStatus=!$LightStatus;@Cluster::Right_Turn_Indicator=!@Cluster::Right_Turn_Indicator;
+  setTimer(msTrightflash,flashPeriod);
+}
+
+on sysvar Vehicle_Control::Hazards_Enable
+{
+  if(@this==1)
+  {
+    $VehicleLight=3;@Cluster::Left_Turn_Indicator=1;@Cluster::Right_Turn_Indicator=1;
+    settimer(msTleftflash,flashPeriod);setTimer(msTrightflash,flashPeriod);
+  }
+  else
+  {
+    $VehicleLight=TurnLightStatus;
+    switch(TurnLightStatus)
+    {
+      case 1: //Left Light flash
+        cancelTimer(msTrightflash);
+        @Cluster::Right_Turn_Indicator=0;
+      break;
+      case 2: //Right Light flash
+        cancelTimer(msTleftflash);
+        @Cluster::Left_Turn_Indicator=0;
+      break;
+      case 0: //swicth off both light
+        cancelTimer(msTrightflash);
+        cancelTimer(msTleftflash);
+        $LightStatus=0;
+        @Cluster::Left_Turn_Indicator=0;
+        @Cluster::Right_Turn_Indicator=0;
+      break;
+    }
+  }
+}

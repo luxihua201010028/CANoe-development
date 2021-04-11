@@ -1,0 +1,251 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Client Panel">
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl20" Children="Controls" ControlName="Tcpgroup">
+      <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl30" Children="Controls" ControlName="TcpServerIP">
+        <Property Name="Name">TextBoxControl30</Property>
+        <Property Name="Size">125, 27</Property>
+        <Property Name="Location">116, 60</Property>
+        <Property Name="AlarmUpperTextColor">Black</Property>
+        <Property Name="BoxForeColor">Black</Property>
+        <Property Name="AlarmLowerBkgColor">Blue</Property>
+        <Property Name="BoxTextAlign">Right</Property>
+        <Property Name="TextBackColor">231, 231, 231</Property>
+        <Property Name="ValueDisplay">Text</Property>
+        <Property Name="AlarmUpperBkgColor">Red</Property>
+        <Property Name="AlarmLowerTextColor">Black</Property>
+        <Property Name="BoxFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmUpperFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmLowerFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">TcpClientIp:</Property>
+        <Property Name="BoxBorderStyle">FixedSingle</Property>
+        <Property Name="BoxBackColor">White</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">4;16;TCPIP;;;TcpClientIp;4;;;-1</Property>
+        <Property Name="TabIndex">30</Property>
+        <Property Name="ReadOnlyControl">True</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl1" Children="Controls" ControlName="TcpDisconnect">
+        <Property Name="Name">ButtonControl1</Property>
+        <Property Name="Size">153, 23</Property>
+        <Property Name="Location">355, 99</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Disconnect from server</Property>
+        <Property Name="UseTransparentColor">False</Property>
+        <Property Name="SymbolConfiguration">4;16;TCPIP;;;TcpDisconnect;1;;;-1</Property>
+        <Property Name="TabIndex">1</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl31" Children="Controls" ControlName="Static Text 3">
+        <Property Name="Name">StaticTextControl31</Property>
+        <Property Name="Size">36, 13</Property>
+        <Property Name="Location">8, 64</Property>
+        <Property Name="BackColor">224, 224, 224</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Client:</Property>
+        <Property Name="ForeColor">Black</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl29" Children="Controls" ControlName="Static Text 4">
+        <Property Name="Name">StaticTextControl29</Property>
+        <Property Name="Size">41, 13</Property>
+        <Property Name="Location">8, 104</Property>
+        <Property Name="BackColor">224, 224, 224</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Server:</Property>
+        <Property Name="ForeColor">Black</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl28" Children="Controls" ControlName="Static Text 1">
+        <Property Name="Name">StaticTextControl28</Property>
+        <Property Name="Size">57, 13</Property>
+        <Property Name="Location">152, 26</Property>
+        <Property Name="BackColor">224, 224, 224</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="TextAlign">TopCenter</Property>
+        <Property Name="Text">IP address</Property>
+        <Property Name="ForeColor">Black</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl27" Children="Controls" ControlName="Static Text 2">
+        <Property Name="Name">StaticTextControl27</Property>
+        <Property Name="Size">26, 13</Property>
+        <Property Name="Location">291, 26</Property>
+        <Property Name="BackColor">224, 224, 224</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="TextAlign">TopCenter</Property>
+        <Property Name="Text">Port</Property>
+        <Property Name="ForeColor">Black</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl5" Children="Controls" ControlName="TcpListen">
+        <Property Name="Name">ButtonControl5</Property>
+        <Property Name="Size">153, 23</Property>
+        <Property Name="Location">355, 59</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Connect to server</Property>
+        <Property Name="UseTransparentColor">False</Property>
+        <Property Name="SymbolConfiguration">4;16;TCPIP;;;TcpConnect;1;;;-1</Property>
+        <Property Name="TabIndex">5</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl26" Children="Controls" ControlName="TcpClientPort">
+        <Property Name="Name">TextBoxControl26</Property>
+        <Property Name="Size">70, 27</Property>
+        <Property Name="Location">265, 59</Property>
+        <Property Name="AlarmUpperTextColor">Black</Property>
+        <Property Name="BoxForeColor">Black</Property>
+        <Property Name="AlarmLowerBkgColor">Blue</Property>
+        <Property Name="BoxTextAlign">Right</Property>
+        <Property Name="TextBackColor">231, 231, 231</Property>
+        <Property Name="ValueDisplay">Decimal</Property>
+        <Property Name="AlarmUpperBkgColor">Red</Property>
+        <Property Name="AlarmLowerTextColor">Black</Property>
+        <Property Name="BoxFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmUpperFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmLowerFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">TcpClientPort:</Property>
+        <Property Name="BoxBorderStyle">FixedSingle</Property>
+        <Property Name="BoxBackColor">White</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">4;16;TCPIP;;;TcpClientPort;1;;;-1</Property>
+        <Property Name="TabIndex">26</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl6" Children="Controls" ControlName="Static Text 6">
+        <Property Name="Name">StaticTextControl6</Property>
+        <Property Name="Size">59, 13</Property>
+        <Property Name="Location">8, 184</Property>
+        <Property Name="BackColor">224, 224, 224</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Send data:</Property>
+        <Property Name="ForeColor">Black</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl25" Children="Controls" ControlName="TcpServerPort">
+        <Property Name="Name">TextBoxControl25</Property>
+        <Property Name="Size">70, 27</Property>
+        <Property Name="Location">265, 99</Property>
+        <Property Name="AlarmUpperTextColor">Black</Property>
+        <Property Name="BoxForeColor">Black</Property>
+        <Property Name="AlarmLowerBkgColor">Blue</Property>
+        <Property Name="BoxTextAlign">Right</Property>
+        <Property Name="TextBackColor">231, 231, 231</Property>
+        <Property Name="ValueDisplay">Decimal</Property>
+        <Property Name="AlarmUpperBkgColor">Red</Property>
+        <Property Name="AlarmLowerTextColor">Black</Property>
+        <Property Name="BoxFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmUpperFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmLowerFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">TcpServerPort:</Property>
+        <Property Name="BoxBorderStyle">FixedSingle</Property>
+        <Property Name="BoxBackColor">White</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">4;16;TCPIP;;;TcpServerPort;1;;;-1</Property>
+        <Property Name="TabIndex">25</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl7" Children="Controls" ControlName="TcpClientData">
+        <Property Name="Name">TextBoxControl7</Property>
+        <Property Name="Size">220, 27</Property>
+        <Property Name="Location">116, 179</Property>
+        <Property Name="AlarmUpperTextColor">Black</Property>
+        <Property Name="BoxForeColor">Black</Property>
+        <Property Name="AlarmLowerBkgColor">Blue</Property>
+        <Property Name="BoxTextAlign">Right</Property>
+        <Property Name="TextBackColor">231, 231, 231</Property>
+        <Property Name="ValueDisplay">Text</Property>
+        <Property Name="AlarmUpperBkgColor">Red</Property>
+        <Property Name="AlarmLowerTextColor">Black</Property>
+        <Property Name="BoxFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmUpperFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmLowerFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">TcpClientData:</Property>
+        <Property Name="BoxBorderStyle">FixedSingle</Property>
+        <Property Name="BoxBackColor">White</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">4;16;TCPIP;;;TcpClientData;4;;;-1</Property>
+        <Property Name="TabIndex">7</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl24" Children="Controls" ControlName="TcpClientIP">
+        <Property Name="Name">TextBoxControl24</Property>
+        <Property Name="Size">125, 27</Property>
+        <Property Name="Location">116, 99</Property>
+        <Property Name="AlarmUpperTextColor">Black</Property>
+        <Property Name="BoxForeColor">Black</Property>
+        <Property Name="AlarmLowerBkgColor">Blue</Property>
+        <Property Name="BoxTextAlign">Right</Property>
+        <Property Name="TextBackColor">231, 231, 231</Property>
+        <Property Name="ValueDisplay">Text</Property>
+        <Property Name="AlarmUpperBkgColor">Red</Property>
+        <Property Name="AlarmLowerTextColor">Black</Property>
+        <Property Name="BoxFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmUpperFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmLowerFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmGeneralSettings">1;0;0;0</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">TcpServerIp:</Property>
+        <Property Name="BoxBorderStyle">FixedSingle</Property>
+        <Property Name="BoxBackColor">White</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">4;16;TCPIP;;;TcpServerIp;4;;;-1</Property>
+        <Property Name="TabIndex">24</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl23" Children="Controls" ControlName="TcpData">
+        <Property Name="Name">TextBoxControl23</Property>
+        <Property Name="Size">220, 27</Property>
+        <Property Name="Location">115, 139</Property>
+        <Property Name="AlarmUpperTextColor">Black</Property>
+        <Property Name="BoxForeColor">Black</Property>
+        <Property Name="AlarmLowerBkgColor">Blue</Property>
+        <Property Name="BoxTextAlign">Right</Property>
+        <Property Name="TextBackColor">231, 231, 231</Property>
+        <Property Name="ValueDisplay">Text</Property>
+        <Property Name="AlarmUpperBkgColor">Red</Property>
+        <Property Name="AlarmLowerTextColor">Black</Property>
+        <Property Name="BoxFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmUpperFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmLowerFont">Microsoft Sans Serif, 13pt</Property>
+        <Property Name="AlarmGeneralSettings">1;2;0;0</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">TcpData:</Property>
+        <Property Name="BoxBorderStyle">FixedSingle</Property>
+        <Property Name="BoxBackColor">White</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">4;16;TCPIP;;;TcpData;4;;;-1</Property>
+        <Property Name="TabIndex">23</Property>
+        <Property Name="ReadOnlyControl">True</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.ButtonControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="ButtonControl22" Children="Controls" ControlName="TcpSend">
+        <Property Name="Name">ButtonControl22</Property>
+        <Property Name="Size">153, 23</Property>
+        <Property Name="Location">355, 179</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Send data to server</Property>
+        <Property Name="UseTransparentColor">False</Property>
+        <Property Name="SymbolConfiguration">4;16;TCPIP;;;TcpSend;1;;;-1</Property>
+        <Property Name="TabIndex">22</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.63.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl21" Children="Controls" ControlName="Static Text 5">
+        <Property Name="Name">StaticTextControl21</Property>
+        <Property Name="Size">88, 13</Property>
+        <Property Name="Location">8, 144</Property>
+        <Property Name="BackColor">224, 224, 224</Property>
+        <Property Name="Font">Microsoft Sans Serif, 8pt</Property>
+        <Property Name="Text">Data from server:</Property>
+        <Property Name="ForeColor">Black</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl20</Property>
+      <Property Name="Size">522, 220</Property>
+      <Property Name="Location">1, 4</Property>
+      <Property Name="BackColor">224, 224, 224</Property>
+      <Property Name="Font">Courier New, 13pt</Property>
+      <Property Name="Text">TCP</Property>
+      <Property Name="ForeColor">Black</Property>
+      <Property Name="TabIndex">20</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">530, 230</Property>
+    <Property Name="BackColor">231, 231, 231</Property>
+    <Property Name="Panel">Panel</Property>
+  </Object>
+</Panel>

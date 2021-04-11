@@ -1,0 +1,6 @@
+C:\Users\Public\Documents\Vector\CANoe\TUP_Sources\Chapter_19\Source\MenuPluginDemo\MenuPluginDemo\bin\Release\MenuPluginDemo.dll
+C:\Users\Public\Documents\Vector\CANoe\TUP_Sources\Chapter_19\Source\MenuPluginDemo\MenuPluginDemo\bin\Release\MenuPluginDemo.pdb
+C:\Users\Public\Documents\Vector\CANoe\TUP_Sources\Chapter_19\Source\MenuPluginDemo\MenuPluginDemo\bin\Release\Microsoft.QualityTools.Testing.Fakes.dll
+C:\Users\Public\Documents\Vector\CANoe\TUP_Sources\Chapter_19\Source\MenuPluginDemo\MenuPluginDemo\bin\Release\Vector.MenuPlugin.dll
+C:\Users\Public\Documents\Vector\CANoe\TUP_Sources\Chapter_19\Source\MenuPluginDemo\MenuPluginDemo\obj\Release\MenuPluginDemo.dll
+C:\Users\Public\Documents\Vector\CANoe\TUP_Sources\Chapter_19\Source\MenuPluginDemo\MenuPluginDemo\obj\Release\MenuPluginDemo.pdb

@@ -1,0 +1,39 @@
+/*@!Encoding:1252*/
+includes
+{
+  //To add the head files
+}
+
+variables
+{
+  //To add the variables
+  int busflag=0; //current bus status: 0 - Deactivate CANoe IL ; 1 - Activate CANoe IL 
+}
+
+on preStart
+{
+  ILControlInit(); //Initialize CANoe IL 
+  ILControlStop(); //Deactivate CANoe IL 
+}
+
+on signal_update LockStatus
+{
+  if(this!=busflag)
+  {
+    if(this==1)
+    {
+      ILControlStart();  //Activate CANoe IL    
+    }
+    else if(this==0)
+    {
+      ILControlStop();  //Deactivate CANoe IL      
+    }
+    busflag=this;
+  }
+}
+
+
+on signal_update Gear
+{
+  @Cluster::Gear_Status= this;   //To display current Gear status in panel
+}

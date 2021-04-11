@@ -1,0 +1,161 @@
+/*@!Encoding:1252*/
+includes
+{
+  #pragma library("..\Exec32\capldll.dll")
+}
+
+variables 
+{
+  dword gHandle;
+}
+
+on start 
+{
+  writeLineEx(1,1,"2. DLL Initialization: Done!");  
+  
+  /* This function will initialize all callback 
+     functions in the CAPLDLL. The handle include 
+     the register ID number of CAPL node. */
+  dllInit(gHandle);
+ }
+
+
+on preStart
+{
+  /* This function will register the CAPLDLL.
+     The handle is important for all function calls. He 
+     will indents the CAPL node in the DLL */   
+  writeLineEx(1,1,"");
+  writeLineEx(1,1,"");
+  writeLineEx(1,1,"--------------------- CAPL-DLL Example -----------------------");
+  writeLineEx(1,1,"");
+  writeLineEx(1,1,"Start procedure:");
+  gHandle = registerCAPLDLL();
+  writeLineEx(1,1,"1. DLL Registration:   Handle = %d", gHandle);
+}
+
+on stopMeasurement
+{
+  /* This function will release the CAPL function 
+     handle in the CAPLDLL */
+  dllEnd(gHandle);
+}
+
+on sysvar CAPL_DLL::getMac_press
+{
+  long mac1,mac2;
+  char mac[18];
+  int offset;
+  long temp_int;
+  long temp_long;
+  char temp_hex[3];
+  if(@CAPL_DLL::getMac_press==1)
+  {
+    //read MAC1 code and show it in Write Windows
+    mac1 = dllGetMac1();
+    writeLineEx(1,1,"CAPL CallBack Function shows MAC1 = 0x%x",mac1);
+    
+    //read MAC2 code and show it in Write Windows
+    mac2 = dllGetMac2();
+    writeLineEx(1,1,"CAPL CallBack Function shows MAC2 = 0x%x",mac2);
+   @CAPL_DLL::getMac_press=0;
+    
+   //process the char for display
+   offset=0;
+   temp_int= mac1/0x10000;
+   ltoa(temp_int,temp_hex,16);
+   if(strlen(temp_hex)==1)
+    {
+      mac[offset]='0';
+      offset++;
+    }
+   strncpy_off(mac,offset,temp_hex,18);
+   offset=2;
+   strncpy_off(mac,2,"-",18);
+   
+   offset=3;
+   temp_int= mac1/0x100%0x100;
+   ltoa(temp_int,temp_hex,16);
+   if(strlen(temp_hex)==1)
+    {
+      mac[offset]='0';
+      offset++;
+    } 
+   strncpy_off(mac,offset,temp_hex,18);
+   offset=5;
+   strncpy_off(mac,5,"-",18);
+    
+   offset=6;
+   temp_int= mac1%0x100;
+   ltoa(temp_int,temp_hex,16);
+   if(strlen(temp_hex)==1)
+    {
+      mac[offset]='0';
+      offset++;
+    }  
+   strncpy_off(mac,offset,temp_hex,18);
+   offset=8;
+   strncpy_off(mac,8,"-",18);
+      
+   offset=9;
+   temp_int= mac2/0x10000;
+   ltoa(temp_int,temp_hex,16);
+   if(strlen(temp_hex)==1)
+    {
+      mac[offset]='0';
+      offset++;
+    }  
+   strncpy_off(mac,offset,temp_hex,18);
+   offset=11;
+   strncpy_off(mac,offset,"-",18);
+    
+   offset=12;  
+   temp_int= mac2/0x100%0x100;
+   ltoa(temp_int,temp_hex,16);
+   if(strlen(temp_hex)==1)
+    {
+      mac[offset]='0';
+      offset++;
+    }  
+   strncpy_off(mac,offset,temp_hex,18);
+   offset=14; 
+   strncpy_off(mac,offset,"-",18);
+    
+   offset=15;  
+   temp_int= mac2%0x100;
+   ltoa(temp_int,temp_hex,16);
+   if(strlen(temp_hex)==1)
+    {
+      mac[offset]='0';
+      offset++;
+    }  
+    
+    //show the MAC in the Write Window and update the system variable
+   strncpy_off(mac,offset,temp_hex,18);
+   writeLineEx(1,1,"Show MAC: %s",mac);
+   sysSetVariableString(sysvar::CAPL_DLL::MAC_Addr,mac); 
+  }
+}
+
+on sysvar CAPL_DLL::calCrc_press
+{
+  char input_ch[100];
+  byte input_byte[100]; 
+  long crc16;
+  long len;
+  if(@CAPL_DLL::calCrc_press==1)
+  {
+    //get the value of Input_Data and set it for input_byte
+    sysGetVariableData(sysvar::CAPL_DLL::Input_Data,input_byte,len);
+    
+    //calculate the CRC16 and show the info in Write Window
+    crc16 = dllCrc16(input_byte,len);
+    writeLineEx(1,1,"CAPL CallBack Function shows crc16 is: %x",crc16);
+    
+    //update the system variables and show them on panel
+    @sysvar::CAPL_DLL::CRC_HByte = crc16>>8; //High Byte of CRC16
+    @sysvar::CAPL_DLL::CRC_LByte = crc16&0x00FF; //Low Byte of CRC16
+   }
+}
+
+

@@ -1,0 +1,29 @@
+/*@!Encoding:1252*/
+    //Engine Node CAPL Program
+    includes
+    {
+      
+    }
+
+    variables
+    {
+      
+    }
+    //process the change event of sysvar::Engine::EngineStateSwitch
+    on sysvar sysvar::Engine::EngineStateSwitch
+    {
+     $EngineState::OnOff = @this;
+      if(@this)
+        $EngineState::EngineSpeed = @sysvar::Engine::EngineSpeedEntry;
+      else
+        $EngineState::EngineSpeed = 0;
+    }
+
+    //process the change event of sysvar::Engine::EngineSpeedEntry
+    on sysvar sysvar::Engine::EngineSpeedEntry
+    {
+      if(@sysvar::Engine::EngineStateSwitch) 
+      {
+        $EngineState::EngineSpeed = @this;
+      }
+    }

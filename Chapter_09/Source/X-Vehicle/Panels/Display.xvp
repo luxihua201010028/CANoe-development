@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+<Panel Type="Vector.CANalyzer.Panels.PanelSerializer, Vector.CANalyzer.Panels.Serializer, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null">
+  <Object Type="Vector.CANalyzer.Panels.Runtime.Panel, Vector.CANalyzer.Panels.Common, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="Panel" Children="Controls" ControlName="Display">
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl2" Children="Controls" ControlName="DoorGrp">
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl1" ControlName="DoorState">
+        <Property Name="Name">SwitchControl1</Property>
+        <Property Name="Size">171, 163</Property>
+        <Property Name="Location">23, 19</Property>
+        <Property Name="StateCnt">4</Property>
+        <Property Name="SwitchValues">1;4;0;1;2;3</Property>
+        <Property Name="ImageFile">Bitmaps\CarDoorOpenClose.bmp</Property>
+        <Property Name="IsProportional">False</Property>
+        <Property Name="SymbolConfiguration">5;1;XVehicle;;;EnvDoorState;1;;;-1;;;</Property>
+        <Property Name="TabIndex">0</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl2</Property>
+      <Property Name="Size">225, 204</Property>
+      <Property Name="Location">203, 9</Property>
+      <Property Name="Text">Door</Property>
+      <Property Name="TabIndex">1</Property>
+    </Object>
+    <Object Type="Vector.CANalyzer.Panels.Design.GroupBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="GroupBoxControl1" Children="Controls" ControlName="Group Box 1">
+      <Object Type="Vector.CANalyzer.Panels.Design.TextBoxControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="TextBoxControl1" Children="Controls" ControlName="Input/Output Box 1">
+        <Property Name="Name">TextBoxControl1</Property>
+        <Property Name="Size">45, 22</Property>
+        <Property Name="Location">71, 173</Property>
+        <Property Name="AlarmUpperTextColor">WindowText</Property>
+        <Property Name="BoxForeColor">Lime</Property>
+        <Property Name="ValueDecimalPlaces">0</Property>
+        <Property Name="AlarmLowerBkgColor">Salmon</Property>
+        <Property Name="TextBackColor">Silver</Property>
+        <Property Name="ValueDisplay">Decimal</Property>
+        <Property Name="AlarmUpperBkgColor">IndianRed</Property>
+        <Property Name="AlarmLowerTextColor">WindowText</Property>
+        <Property Name="BoxFont">Microsoft Sans Serif, 9.75pt</Property>
+        <Property Name="AlarmUpperFont">Microsoft Sans Serif, 9.75pt</Property>
+        <Property Name="AlarmLowerFont">Microsoft Sans Serif, 9.75pt</Property>
+        <Property Name="SendOnFocusLost">False</Property>
+        <Property Name="AlarmGeneralSettings">1;0;0;3500</Property>
+        <Property Name="DisplayLabel">Hide</Property>
+        <Property Name="DescriptionText">EngineSpeed:</Property>
+        <Property Name="BoxBorderStyle">FixedSingle</Property>
+        <Property Name="BoxBackColor">DimGray</Property>
+        <Property Name="DescriptionSize">0, 0</Property>
+        <Property Name="SymbolConfiguration">5;2;XVehicle;Engine;EngineState;EngineSpeed;1;CAN;;-1;;;</Property>
+        <Property Name="TabIndex">4</Property>
+        <Property Name="ReadOnlyControl">True</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl2" Children="Controls" ControlName="Static Text 1">
+        <Property Name="Name">StaticTextControl2</Property>
+        <Property Name="Size">131, 21</Property>
+        <Property Name="Location">27, 176</Property>
+        <Property Name="BackColor">Black</Property>
+        <Property Name="Text">Description</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.StaticTextControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="StaticTextControl1" Children="Controls" ControlName="Static Text 1">
+        <Property Name="Name">StaticTextControl1</Property>
+        <Property Name="Size">33, 13</Property>
+        <Property Name="Location">78, 154</Property>
+        <Property Name="BackColor">Black</Property>
+        <Property Name="Text">r.p.m.</Property>
+        <Property Name="ForeColor">White</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.AnalogGaugeControl, Vector.CANalyzer.Panels.AnalogGauge, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="AnalogGaugeControl1" ControlName="Analog Gauge 1">
+        <Property Name="Name">AnalogGaugeControl1</Property>
+        <Property Name="Size">131, 131</Property>
+        <Property Name="Location">27, 46</Property>
+        <Property Name="LegendColor">White</Property>
+        <Property Name="CenterColor">White</Property>
+        <Property Name="BackgroundColor">Black</Property>
+        <Property Name="ScaleMargin">5</Property>
+        <Property Name="ArrowColor">Red</Property>
+        <Property Name="IsLegendText">False</Property>
+        <Property Name="CriticalProps" Member="AAEAAAD/////AQAAAAAAAAAEAQAAAC9TeXN0ZW0uUmVmbGVjdGlvbi5NZW1iZXJJbmZvU2VyaWFsaXphdGlvbkhvbGRlcgcAAAAETmFtZQxBc3NlbWJseU5hbWUJQ2xhc3NOYW1lCVNpZ25hdHVyZQpTaWduYXR1cmUyCk1lbWJlclR5cGUQR2VuZXJpY0FyZ3VtZW50cwEBAQEBAAMIDVN5c3RlbS5UeXBlW10GAgAAAAUuY3RvcgYDAAAAXVZlY3Rvci5DQU5hbHl6ZXIuUGFuZWxzLkFuYWxvZ0dhdWdlLCBWZXJzaW9uPTEwLjAuMTE0LjAsIEN1bHR1cmU9bmV1dHJhbCwgUHVibGljS2V5VG9rZW49bnVsbAYEAAAANlZlY3Rvci5DQU5hbHl6ZXIuUGFuZWxzLkRlc2lnbi5HYXVnZUNyaXRpY2FsUHJvcGVydGllcwYFAAAAMlZvaWQgLmN0b3IoRG91YmxlLCBEb3VibGUsIERvdWJsZSwgRG91YmxlLCBEb3VibGUpBgYAAABQLmN0b3IoU3lzdGVtLkRvdWJsZSwgU3lzdGVtLkRvdWJsZSwgU3lzdGVtLkRvdWJsZSwgU3lzdGVtLkRvdWJsZSwgU3lzdGVtLkRvdWJsZSkBAAAACgs=">
+          <Argument>0</Argument>
+          <Argument>4</Argument>
+          <Argument>0</Argument>
+          <Argument>0</Argument>
+          <Argument>3.5</Argument>
+        </Property>
+        <Property Name="TicksColor">White</Property>
+        <Property Name="MidColor">White</Property>
+        <Property Name="GaugeFont">Microsoft Sans Serif, 8.25pt</Property>
+        <Property Name="ArrowWidth">3</Property>
+        <Property Name="MainTicksNumber">8</Property>
+        <Property Name="IsMinRange">False</Property>
+        <Property Name="LegendText">r.p.m.</Property>
+        <Property Name="ScaleAngle">240</Property>
+        <Property Name="SymbolConfiguration">5;16;Engine;;;EngineSpeedDspMeter;2;;;-1;;;</Property>
+      </Object>
+      <Object Type="Vector.CANalyzer.Panels.Design.SwitchControl, Vector.CANalyzer.Panels.CommonControls, Version=10.0.114.0, Culture=neutral, PublicKeyToken=null" Name="SwitchControl2" ControlName="IgnitionState">
+        <Property Name="Name">SwitchControl2</Property>
+        <Property Name="Size">32, 34</Property>
+        <Property Name="Location">74, 10</Property>
+        <Property Name="StateCnt">2</Property>
+        <Property Name="SwitchValues">1;2;0;1</Property>
+        <Property Name="ImageFile">Bitmaps\DisplayCar.bmp</Property>
+        <Property Name="SymbolConfiguration">5;2;XVehicle;Engine;EngineState;OnOff;1;CAN;;-1;;;</Property>
+        <Property Name="TabIndex">0</Property>
+        <Property Name="ReadOnlyControl">True</Property>
+      </Object>
+      <Property Name="Name">GroupBoxControl1</Property>
+      <Property Name="Size">185, 204</Property>
+      <Property Name="Location">12, 9</Property>
+      <Property Name="Text">Engine</Property>
+      <Property Name="TabIndex">0</Property>
+    </Object>
+    <Property Name="Name">Panel</Property>
+    <Property Name="Size">435, 225</Property>
+    <Property Name="BackColor">White</Property>
+  </Object>
+</Panel>
